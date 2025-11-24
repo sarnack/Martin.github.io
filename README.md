@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Prénom NOM] - Développeur Web & Java</title>
+    <title>Martin Morenvillé - Développeur Web & Java</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -513,7 +513,7 @@
             <a class="Portait" href="#">
                 <img src="Portrait.jpg" alt="Portait" style="width: 65%; height: auto;">
             </a>
-            <h1>[Prénom NOM]</h1>
+            <h1>Martin Morenvillé</h1>
             <p class="subtitle">Développeur <span>Web & Java</span></p>
             <p class="intro">
                 Passionné par le développement et l'univers du jeu vidéo. Je crée des solutions robustes 
@@ -543,10 +543,10 @@
                 </div>
 
                 <div class="timeline-item">
-                    <h3>Baccalauréat [Type] - Spécialités [...]</h3>
-                    <p class="date">Obtenu en [année]</p>
-                    <p><strong>Lycée [Nom], [Ville]</strong></p>
-                    <p>Mention [Mention]. Spécialités : [liste des spécialités].</p>
+                    <h3>Baccalauréat général - Spécialités AMC et NSI</h3>
+                    <p class="date">Obtenu en 2024</p>
+                    <p><strong>Lycée Raymond Queneau, Villeneuve d'Ascq</strong></p>
+                    <p>Mention Assez Bien. Spécialités : AMC et NSI.</p>
                 </div>
             </div>
         </div>
@@ -561,9 +561,6 @@
                     <h3>💻 Langages</h3>
                     <div class="tech-tags">
                         <span class="tech-badge">Java</span>
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">PHP</span>
-                        <span class="tech-badge">Python</span>
                         <span class="tech-badge">SQL</span>
                         <span class="tech-badge">HTML/CSS</span>
                     </div>
@@ -572,10 +569,6 @@
                 <div class="skill-category">
                     <h3>🛠️ Frameworks</h3>
                     <div class="tech-tags">
-                        <span class="tech-badge">Spring Boot</span>
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Vue.js</span>
-                        <span class="tech-badge">Symfony</span>
                         <span class="tech-badge">JavaFX</span>
                     </div>
                 </div>
@@ -585,7 +578,6 @@
                     <div class="tech-tags">
                         <span class="tech-badge">MySQL</span>
                         <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">MongoDB</span>
                     </div>
                 </div>
 
@@ -593,7 +585,7 @@
                     <h3>🔧 Outils</h3>
                     <div class="tech-tags">
                         <span class="tech-badge">Git/GitHub</span>
-                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Scene Builder</span>
                         <span class="tech-badge">VS Code</span>
                         <span class="tech-badge">IntelliJ IDEA</span>
                         <span class="tech-badge">Figma</span>
@@ -603,7 +595,7 @@
                 <div class="skill-category">
                     <h3>🎮 Soft Skills</h3>
                     <p style="color: var(--text-secondary); line-height: 1.8;">
-                        Travail en équipe Agile • Résolution de problèmes • 
+                        Travail en équipe Agile • Patient • 
                         Autonomie • Veille technologique • Communication
                     </p>
                 </div>
@@ -686,7 +678,7 @@
                 <div class="contact-card">
                     <div class="contact-icon">📧</div>
                     <h3>Email</h3>
-                    <a href="mailto:prenom.nom@etu.univ-lille.fr">prenom.nom@etu.univ-lille.fr</a>
+                    <a href="mailto:martin.moenville@gmail.com">martin.moenville@gmail.com</a>
                 </div>
 
                 <div class="contact-card">
@@ -698,15 +690,15 @@
                 <div class="contact-card">
                     <div class="contact-icon">💻</div>
                     <h3>GitHub</h3>
-                    <a href="#">github.com/votre-username</a>
+                    <a href="#">github.com/sarnack</a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 [Prénom NOM] - Développeur Web & Java</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">BUT Informatique - IUT de [Ville]</p>
+        <p>© 2024 Martin Morenvillé - Développeur Web & Java</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">BUT Informatique 2ème années- IUT de Villeune d'Ascq</p>
     </footer>
 
     <script>
