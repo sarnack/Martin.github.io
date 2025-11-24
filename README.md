@@ -231,24 +231,135 @@
             margin-top: 3rem;
         }
 
-        /* Responsive */
+        /* Responsive - Adaptation complète */
+        @media (max-width: 1200px) {
+            section {
+                max-width: 90%;
+                margin: 1.5rem auto;
+            }
+        }
+
         @media (max-width: 768px) {
             nav ul {
-                gap: 1rem;
+                gap: 0.5rem;
+                font-size: 0.9rem;
             }
             
             section {
-                padding: 1rem;
-                margin: 1rem;
+                padding: 1.5rem 1rem;
+                margin: 1rem 0.5rem;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            #accueil {
+                min-height: 50vh;
+                padding: 2rem 1rem;
+            }
+
+            #accueil .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .presentation {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .item {
+                padding: 1rem;
             }
 
             .item-header {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .mindmap-container {
+                height: 300px;
+                font-size: 0.9rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.3rem;
+                padding: 0.5rem;
+            }
+
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            #accueil .subtitle {
+                font-size: 1rem;
+            }
+
+            .presentation {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 1rem 0.75rem;
+                margin: 0.5rem;
+            }
+
+            .item {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            .logo {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+
+            .contact-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .competences-list {
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
