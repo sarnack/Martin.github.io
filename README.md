@@ -510,6 +510,9 @@
     <!-- Hero Section -->
     <section id="accueil" class="hero">
         <div class="hero-content">
+            <a class="avatar" href="#">
+                <img src="Portrait.jpg" alt="Portait">
+            </a>
             <h1>[Prénom NOM]</h1>
             <p class="subtitle">Développeur <span>Web & Java</span></p>
             <p class="intro">
