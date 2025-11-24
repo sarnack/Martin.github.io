@@ -511,7 +511,7 @@
     <section id="accueil" class="hero">
         <div class="hero-content">
             <a class="Portait" href="#">
-                <img src="Portrait.jpg" alt="Portait">
+                <img src="Portrait.jpg" alt="Portait" style="width: 400px; height: 300px;">
             </a>
             <h1>[Prénom NOM]</h1>
             <p class="subtitle">Développeur <span>Web & Java</span></p>
