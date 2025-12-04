@@ -3,38 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Numérique - Martin Morenville</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Martin Morenville | Développeur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. CONFIGURATION GÉNÉRALE (Respect des consignes) --- */
+        /* --- 1. VARIABLES & RESET (Dark Theme Palette) --- */
+        :root {
+            --bg-color: #0f172a;       /* Fond principal (Bleu nuit très sombre) */
+            --card-bg: #1e293b;        /* Fond des cartes */
+            --text-main: #e2e8f0;      /* Texte clair */
+            --text-muted: #94a3b8;     /* Texte gris pour les détails */
+            --accent: #38bdf8;         /* Cyan lumineux pour les liens/accents */
+            --accent-hover: #0ea5e9;   /* Cyan plus foncé au survol */
+            --border: #334155;         /* Bordures subtiles */
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* Fond clair */
-            color: #333; /* Gris foncé pour le texte */
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* --- 2. TYPOGRAPHIE --- */
+        h1, h2, h3 {
+            color: #fff;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Police "Code" pour les petits détails techniques */
+        .tech-font {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: var(--accent);
         }
 
         a {
             text-decoration: none;
-            color: #007bff; /* LIENS EN BLEU (Critère obligatoire) */
-            font-weight: bold;
+            color: var(--accent);
+            transition: color 0.3s;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: var(--accent-hover);
         }
 
-        /* --- 2. BARRE DE NAVIGATION --- */
+        /* --- 3. NAVIGATION (Glassmorphism) --- */
         header {
-            background-color: #2c3e50;
-            position: sticky;
+            position: fixed;
             top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.85); /* Semi-transparent */
+            backdrop-filter: blur(10px);        /* Effet de flou */
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px 0;
         }
 
         nav ul {
@@ -43,144 +94,190 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            gap: 30px;
             flex-wrap: wrap;
-        }
-
-        nav ul li {
-            margin: 0;
         }
 
         nav ul li a {
-            display: block;
-            padding: 15px 20px;
-            color: white; /* Texte blanc sur menu sombre */
+            color: var(--text-main);
             font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        nav ul li a:hover {
-            background-color: #34495e;
-            text-decoration: none;
-        }
-
-        /* --- 3. SECTIONS DU CV --- */
-        section {
-            padding: 60px 20px;
-            max-width: 900px; /* Limite la largeur pour la lisibilité */
-            margin: 0 auto;
-            background-color: white;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-
-        h2 {
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            font-size: 1.5rem;
-        }
-
-        /* --- 4. STYLE SPÉCIFIQUE : ACCUEIL --- */
-        #accueil {
-            text-align: center;
-        }
-
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #007bff;
-            margin-bottom: 20px;
-        }
-
-        .intro-text {
-            text-align: justify; /* Texte justifié (Critère obligatoire) */
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* --- 5. STYLE SPÉCIFIQUE : FORMATIONS & EXPERIENCES --- */
-        .timeline-item {
-            margin-bottom: 30px;
-            padding-left: 20px;
-            border-left: 3px solid #e9ecef;
+            font-size: 0.95rem;
             position: relative;
         }
 
-        .timeline-date {
-            font-weight: bold;
-            color: #007bff;
-            font-size: 0.9rem;
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            margin: 5px 0;
-            font-weight: 700;
-        }
-
-        .timeline-place {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 10px;
+        /* Petit effet de soulignement animé au survol du menu */
+        nav ul li a::after {
+            content: '';
             display: block;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
         }
 
-        /* --- 6. STYLE SPÉCIFIQUE : COMPÉTENCES (Style Mindmap/Cartes) --- */
-        .skills-container {
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- 4. STRUCTURE DES SECTIONS --- */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- 5. STYLE ACCUEIL (Hero Section) --- */
+        #accueil {
+            text-align: center;
+            padding-top: 160px; /* Espace pour le header */
+            min-height: 90vh; /* Prend presque tout l'écran */
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .skill-category {
-            flex: 1 1 300px; /* Responsive cards */
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 5px solid #007bff;
+        .profile-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3); /* Lueur bleue */
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .pitch {
+            max-width: 700px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .btn-cta {
+            background-color: var(--accent);
+            color: #0f172a; /* Texte foncé sur bouton clair */
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+            color: #0f172a;
+            text-decoration: none;
+        }
+
+        /* --- 6. CARTES (Formations, Expériences) --- */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Monte légèrement */
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .date-badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .place {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- 7. GRID POUR COMPÉTENCES --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid var(--accent);
         }
 
         .skill-list li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
         }
 
-        /* --- 7. CONTACT --- */
-        .contact-info {
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            background-color: #0077b5; /* Bleu LinkedIn */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        
-        .contact-btn:hover {
-            background-color: #005582;
-            color: white;
-            text-decoration: none;
+        .skill-list i {
+            color: var(--accent);
+            margin-right: 10px;
         }
 
-        /* --- RESPONSIVE MOBILE --- */
-        @media (max-width: 600px) {
-            nav ul { flex-direction: column; }
-            nav ul li a { text-align: center; border-bottom: 1px solid #3d566e; }
-            .intro-text { text-align: left; }
+        /* --- 8. CONTACT --- */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            section { padding: 60px 20px; }
+            .card-header { flex-direction: column; gap: 5px; }
+            nav ul { gap: 15px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -189,154 +286,159 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#accueil"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="#formations"><i class="fas fa-graduation-cap"></i> Formations</a></li>
-                <li><a href="#competences"><i class="fas fa-brain"></i> Compétences</a></li>
-                <li><a href="#realisations"><i class="fas fa-laptop-code"></i> Réalisations</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#accueil">01. Accueil</a></li>
+                <li><a href="#formations">02. Formations</a></li>
+                <li><a href="#competences">03. Compétences</a></li>
+                <li><a href="#realisations">04. Projets</a></li>
+                <li><a href="#contact">05. Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="accueil">
-        <img src="https://via.placeholder.com/150" alt="Photo de Martin Morenville" class="profile-pic">
+        <div class="profile-container">
+            <img src="https://via.placeholder.com/160" alt="Martin Morenville" class="profile-pic">
+        </div>
         
-        <h1>CV de Martin MORENVILLÉ</h1>
-        <h3>Étudiant Développeur d'Applications & Web</h3>
+        <p class="tech-font">Bonjour, je m'appelle</p>
+        <h1>Martin MORENVILLÉ.</h1>
+        <h2 class="subtitle">Étudiant Développeur d'Applications & Web</h2>
         
-        <div class="intro-text">
+        <div class="pitch">
             <p>
-                Actuellement étudiant en 2ème année de BUT Informatique à l'IUT de Lille, je suis à la recherche d'un <strong>stage dans le développement informatique</strong> (web ou logiciel) pour mettre en pratique ma passion pour le code. Curieux et rigoureux, j'ai acquis des bases solides en <strong>Java</strong> et en développement Web, que j'ai concrétisées lors d'un projet de création de jeu vidéo en méthode Agile.
-            </p>
-            <p>
-                Au-delà de la technique, mes 9 années de tennis en compétition et mon investissement dans des projets associatifs m'ont appris la persévérance et le travail d'équipe. Je souhaite aujourd'hui apporter mon dynamisme et mes compétences techniques (Git, POO) au service de vos projets.
+                Actuellement en 2ème année de BUT Informatique à l'IUT de Lille. Passionné par la création numérique, je transforme des lignes de code en solutions concrètes. Je recherche un <strong>stage de développement</strong> pour avril 2025.
             </p>
         </div>
+
+        <a href="#contact" class="btn-cta">Me contacter</a>
     </section>
 
     <section id="formations">
-        <h2><i class="fas fa-user-graduate"></i> Formations</h2>
+        <h2><span class="tech-font">02.</span> Formations</h2>
 
-        <div class="timeline-item">
-            <span class="timeline-date">Septembre 2023 – Aujourd'hui</span>
-            <h3 class="timeline-title">BUT Informatique (2ème année)</h3>
-            <span class="timeline-place">IUT A de Lille (Université de Lille)</span>
-            <p>Acquisition de compétences en développement logiciel (Java), développement web, bases de données (SQL) et gestion de projet.</p>
+        <div class="card">
+            <div class="card-header">
+                <h3>BUT Informatique (2ème année)</h3>
+                <span class="date-badge">2023 - Présent</span>
+            </div>
+            <span class="place">IUT A de Lille (Université de Lille)</span>
+            <p>Spécialisation en développement applicatif, conception de bases de données et gestion de projet Agile. <br>
+            <small style="color:var(--text-muted)">Projets clés : Développement Java, Sites Web dynamiques.</small></p>
         </div>
 
-        <div class="timeline-item">
-            <span class="timeline-date">2024</span>
-            <h3 class="timeline-title">Certification Anglais (Niveau B2)</h3>
-            <span class="timeline-place">Université de Lille</span>
-            <p>Capacité à communiquer et travailler dans un environnement technique international.</p>
-        </div>
-
-        <div class="timeline-item">
-            <span class="timeline-date">Juin 2023</span>
-            <h3 class="timeline-title">Baccalauréat Général</h3>
-            <span class="timeline-place">Lycée Raymond Queneau, Villeneuve d'Ascq</span>
+        <div class="card">
+            <div class="card-header">
+                <h3>Baccalauréat Général</h3>
+                <span class="date-badge">Juin 2023</span>
+            </div>
+            <span class="place">Lycée Raymond Queneau, Villeneuve d'Ascq</span>
             <p>Spécialités : Numérique et Sciences Informatiques (NSI) & Anglais Monde Contemporain.<br>
-            Option : Mathématiques complémentaires.</p>
+            Mention Bien.</p>
         </div>
     </section>
 
     <section id="competences">
-        <h2><i class="fas fa-cogs"></i> Compétences</h2>
+        <h2><span class="tech-font">03.</span> Compétences</h2>
         
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i> Savoir-Faire Technique</h3>
-                <ul class="skill-list">
-                    <li><strong>Développement :</strong> Java (POO), HTML5 / CSS3</li>
-                    <li><strong>Outils :</strong> Git, GitHub/GitLab</li>
-                    <li><strong>Systèmes :</strong> Linux, Windows</li>
-                    <li><strong>Méthodologie :</strong> Agile / Scrum</li>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3><i class="fas fa-terminal"></i> Développement</h3>
+                <ul class="skill-list" style="list-style: none; padding:0;">
+                    <li><i class="fas fa-check"></i> Java (POO, Swing)</li>
+                    <li><i class="fas fa-check"></i> HTML5 / CSS3 / JS</li>
+                    <li><i class="fas fa-check"></i> SQL / Bases de données</li>
+                    <li><i class="fas fa-check"></i> Python</li>
                 </ul>
             </div>
 
-            <div class="skill-category">
-                <h3><i class="fas fa-users"></i> Savoir-Être</h3>
-                <ul class="skill-list">
-                    <li>Travail en équipe & collaboratif</li>
-                    <li>Écoute active</li>
-                    <li>Communication orale et écrite</li>
-                    <li>Autonomie et curiosité</li>
+            <div class="skill-card">
+                <h3><i class="fas fa-tools"></i> Outils & Environnement</h3>
+                <ul class="skill-list" style="list-style: none; padding:0;">
+                    <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
+                    <li><i class="fab fa-linux"></i> Linux / Bash</li>
+                    <li><i class="fas fa-tasks"></i> Méthode Agile / Scrum</li>
+                    <li><i class="fas fa-code"></i> VS Code / IntelliJ</li>
                 </ul>
             </div>
 
-            <div class="skill-category">
-                <h3><i class="fas fa-language"></i> Langues</h3>
-                <ul class="skill-list">
-                    <li><strong>Anglais :</strong> Niveau B2 (Intermédiaire)</li>
-                    <li><strong>Allemand :</strong> Niveau A2 (Notions)</li>
+            <div class="skill-card">
+                <h3><i class="fas fa-user-astronaut"></i> Savoir-Être</h3>
+                <ul class="skill-list" style="list-style: none; padding:0;">
+                    <li><i class="fas fa-users"></i> Travail d'équipe</li>
+                    <li><i class="fas fa-lightbulb"></i> Résolution de problèmes</li>
+                    <li><i class="fas fa-brain"></i> Curiosité technique</li>
+                    <li><i class="fas fa-comment-dots"></i> Anglais B2</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="realisations">
-        <h2><i class="fas fa-briefcase"></i> Expériences & Réalisations</h2>
+        <h2><span class="tech-font">04.</span> Expériences & Projets</h2>
 
-        <div class="timeline-item">
-            <span class="timeline-date">2025 (Semaine Agile)</span>
-            <h3 class="timeline-title">Développement d'un Jeu Vidéo en Java</h3>
-            <span class="timeline-place">Projet Universitaire - BUT 2</span>
-            <p>Développement d'un jeu complet en équipe en suivant la méthodologie Agile.</p>
-            <ul>
-                <li>Conception de l'architecture logicielle (POO).</li>
-                <li>Programmation des fonctionnalités en Java.</li>
-                <li>Collaboration via Git.</li>
+        <div class="card">
+            <div class="card-header">
+                <h3>🎮 Jeu Vidéo Java (Projet Agile)</h3>
+                <span class="date-badge">Janvier 2025</span>
+            </div>
+            <p>Développement d'un jeu complet en équipe de 5 sur une semaine intensive.</p>
+            <ul style="color: var(--text-muted); margin-bottom: 20px;">
+                <li>Architecture MVC et Programmation Orientée Objet.</li>
+                <li>Gestion des versions avec Git/GitLab.</li>
+                <li>Réunions quotidiennes (Daily Scrum).</li>
             </ul>
-            <p><strong>Compétences :</strong> Java, Git, Agile.</p>
-            <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i> Voir le code sur GitHub (Lien Preuve)</a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i> Voir le dépôt GitHub</a>
         </div>
 
-        <div class="timeline-item">
-            <span class="timeline-date">Décembre 2024</span>
-            <h3 class="timeline-title">Création de mon CV Numérique</h3>
-            <span class="timeline-place">Projet Personnel / Universitaire</span>
-            <p>Conception et intégration de ce site web pour présenter mon profil professionnel aux recruteurs.</p>
-            <ul>
-                <li>Structuration du contenu et rédaction.</li>
-                <li>Intégration HTML5/CSS3 responsive.</li>
+        <div class="card">
+            <div class="card-header">
+                <h3>🌐 Portfolio Numérique</h3>
+                <span class="date-badge">Décembre 2024</span>
+            </div>
+            <p>Conception de ce site web personnel pour présenter mon parcours.</p>
+            <ul style="color: var(--text-muted); margin-bottom: 20px;">
+                <li>Design responsive et Dark Mode.</li>
+                <li>Code HTML5/CSS3 propre et optimisé.</li>
             </ul>
-            <p><strong>Compétences :</strong> Webdesign, HTML/CSS.</p>
         </div>
 
-        <div class="timeline-item">
-            <span class="timeline-date">2023 (Classe de Première)</span>
-            <h3 class="timeline-title">Projet Interdisciplinaire "Plongée & Environnement"</h3>
-            <span class="timeline-place">Lycée Raymond Queneau</span>
-            <p>Participation à un projet scientifique et sportif avec séjour à la presqu'île de Giens.</p>
-            <ul>
-                <li>Recherche de financements et communication.</li>
-                <li>Obtention du niveau 1 de plongée.</li>
+        <div class="card">
+            <div class="card-header">
+                <h3>🌊 Projet "Plongée & Environnement"</h3>
+                <span class="date-badge">2023</span>
+            </div>
+            <p>Organisation d'un séjour scientifique et sportif (Lycée).</p>
+            <ul style="color: var(--text-muted); margin-bottom: 20px;">
+                <li>Recherche de sponsors et budget.</li>
+                <li>Validation du Niveau 1 de plongée.</li>
             </ul>
-            <p><strong>Compétences :</strong> Gestion de projet, Persévérance.</p>
-            <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> Voir le dossier du projet (Lien Preuve)</a>
         </div>
     </section>
 
-    <section id="contact">
-        <h2><i class="fas fa-paper-plane"></i> Contact</h2>
-        <div class="contact-info">
-            <p>Vous êtes intéressé par mon profil pour un stage ou une collaboration ? N'hésitez pas à me contacter.</p>
-            
-            <p>
-                <i class="fas fa-envelope"></i> <strong>Email perso :</strong> <a href="mailto:martin.morenville@gmail.com">martin.morenville@gmail.com</a><br>
-                <i class="fas fa-university"></i> <strong>Email étudiant :</strong> <a href="mailto:martin.morenville.etu@univ-lille.fr">martin.morenville.etu@univ-lille.fr</a><br>
-                <i class="fas fa-phone"></i> <strong>Téléphone :</strong> 07 67 30 42 85<br>
-                <i class="fas fa-map-marker-alt"></i> <strong>Localisation :</strong> Villeneuve d'Ascq (59)
-            </p>
+    <section id="contact" style="text-align: center; margin-bottom: 50px;">
+        <h2><span class="tech-font">05.</span> Contact</h2>
+        <p style="max-width: 600px; margin: 0 auto; margin-bottom: 40px; color: var(--text-muted);">
+            Mon profil vous intéresse ? Je suis disponible pour échanger sur vos projets ou pour une opportunité de stage.
+        </p>
 
-            <a href="https://www.linkedin.com/" target="_blank" class="contact-btn">
-                <i class="fab fa-linkedin"></i> Retrouvez-moi sur LinkedIn
+        <div class="contact-links">
+            <a href="mailto:martin.morenville@gmail.com" class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <span>Email Personnel</span>
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="contact-item">
+                <i class="fab fa-linkedin contact-icon"></i>
+                <span>LinkedIn</span>
+            </a>
+            <a href="mailto:martin.morenville.etu@univ-lille.fr" class="contact-item">
+                <i class="fas fa-university contact-icon"></i>
+                <span>Email Étudiant</span>
             </a>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 20px; color: #666; font-size: 0.9rem;">
-        <p>&copy; 2024 Martin Morenville - Site réalisé dans le cadre du BUT Informatique</p>
+    <footer style="text-align: center; padding: 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.8rem;">
+        <p>Conçu et développé par Martin Morenville © 2024</p>
     </footer>
 
 </body>
