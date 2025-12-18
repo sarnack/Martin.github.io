@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prénom NOM - Développeur Web Junior</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Navigation fixe */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            min-height: calc(100vh - 80px);
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        /* Titres hiérarchiques */
+        h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        p {
+            font-size: 1.1rem;
+            text-align: justify;
+            margin-bottom: 1rem;
+            max-width: 900px;
+        }
+
+        /* Page Accueil */
+        #accueil {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ecf0f1" width="1200" height="600"/><path fill="%233498db" opacity="0.1" d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        #accueil.active {
+            display: flex;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .intro-text {
+            text-align: justify;
+            line-height: 1.8;
+            margin-top: 1.5rem;
+        }
+
+        /* Cartes pour formations et expériences */
+        .card {
+            background: white;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dates {
+            color: #7f8c8d;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        /* Projets (Réalisations) */
+        .project {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .project h3 {
+            color: #3498db;
+        }
+
+        .competences-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0;
+        }
+
+        .competences-list li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .competences-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .proof-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .proof-link:hover {
+            background: #2980b9;
+        }
+
+        /* Compétences */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .skill-category h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .mindmap-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .mindmap-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+            color: #7f8c8d;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+            min-width: 30px;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil" onclick="showSection('accueil')">Accueil</a></li>
+            <li><a href="#formations" onclick="showSection('formations')">Formations</a></li>
+            <li><a href="#experiences" onclick="showSection('experiences')">Expériences</a></li>
+            <li><a href="#realisations" onclick="showSection('realisations')">Réalisations</a></li>
+            <li><a href="#competences" onclick="showSection('competences')">Compétences</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Accueil -->
+    <section id="accueil" class="active">
+        <div class="hero-content">
+            <h1>Prénom NOM</h1>
+            <p class="hero-subtitle">Développeur Web Junior</p>
+            <div class="intro-text">
+                <p>
+                    Passionné par le développement informatique, je suis actuellement en formation BUT Informatique avec une spécialisation en développement web et applications. Mon parcours m'a permis d'acquérir des compétences solides en programmation, gestion de projets et travail collaboratif. Je recherche activement des opportunités pour mettre en pratique mes connaissances et continuer à évoluer dans le domaine du développement logiciel. Mon objectif est de rejoindre une équipe dynamique où je pourrai contribuer à des projets innovants tout en développant mon expertise technique. Je me distingue par ma capacité d'adaptation, mon souci du détail et ma volonté constante d'apprendre et de progresser dans les technologies émergentes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Formations -->
+    <section id="formations">
+        <h1>Formations</h1>
+        
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>Bachelor Universitaire de Technologie (BUT) Informatique</h3>
+                    <p class="dates">2023 - 2026</p>
+                </div>
+                <div class="logo-placeholder">Logo IUT</div>
+            </div>
+            <p>IUT [Nom de la ville] - Parcours Réalisation d'applications : conception, développement, validation</p>
+            <p>Apprentissage des fondamentaux de la programmation, des bases de données, du développement web et mobile, ainsi que de la gestion de projets informatiques.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>Baccalauréat Général</h3>
+                    <p class="dates">2020 - 2023</p>
+                </div>
+                <div class="logo-placeholder">Logo Lycée</div>
+            </div>
+            <p>Lycée [Nom du lycée] - Spécialités : Mathématiques et Numérique et Sciences Informatiques (NSI)</p>
+            <p>Mention : [Préciser la mention obtenue]</p>
+        </div>
+    </section>
+
+    <!-- Page Expériences -->
+    <section id="experiences">
+        <h1>Expériences Professionnelles</h1>
+        
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>Stage Développeur Web</h3>
+                    <p class="dates">Juin 2024 - Août 2024 (2 mois)</p>
+                </div>
+            </div>
+            <p><strong>Entreprise [Nom de l'entreprise]</strong> - [Ville]</p>
+            <p>
+                Participation au développement d'une application web pour la gestion des stocks. Mise en place de l'interface utilisateur avec React et intégration d'une API REST. Travail en méthode agile avec l'équipe de développement. Rédaction de documentation technique et tests unitaires.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>Projet Tutoré - Développement d'Application</h3>
+                    <p class="dates">Septembre 2023 - Janvier 2024</p>
+                </div>
+            </div>
+            <p><strong>IUT Informatique</strong></p>
+            <p>
+                Conception et développement d'une application de gestion de bibliothèque en équipe de 4 personnes. Utilisation de Java, base de données MySQL et mise en place d'une interface graphique JavaFX. Gestion du projet avec Git et méthode Scrum.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3>Bénévolat - Association [Nom]</h3>
+                    <p class="dates">Depuis Septembre 2023</p>
+                </div>
+            </div>
+            <p>Aide à la maintenance du site web de l'association et formation des membres aux outils numériques.</p>
+        </div>
+    </section>
+
+    <!-- Page Réalisations -->
+    <section id="realisations">
+        <h1>Réalisations et Projets</h1>
+
+        <h2>Projets BUT Informatique</h2>
+
+        <div class="project">
+            <h3>Système de Gestion de Base de Données pour PME</h3>
+            <p class="dates">Mars 2024 - Mai 2024 (3 mois)</p>
+            <p>
+                Développement d'une application complète de gestion de données clients pour une petite entreprise locale. Création du schéma de base de données, implémentation des requêtes SQL optimisées, développement de l'interface utilisateur et mise en place d'un système d'authentification sécurisé. Le projet a été réalisé en équipe de trois personnes avec une méthodologie agile.
+            </p>
+            <ul class="competences-list">
+                <li>Conception et modélisation de bases de données relationnelles (UML, Merise)</li>
+                <li>Développement en SQL (MySQL) avec requêtes complexes et procédures stockées</li>
+                <li>Programmation orientée objet en Java</li>
+                <li>Gestion de projet agile (Scrum) et utilisation de Git pour le versionnement</li>
+                <li>Documentation technique et rédaction de cahier des charges</li>
+            </ul>
+            <a href="#" class="proof-link">📄 Voir le document de preuve (PDF)</a>
+        </div>
+
+        <div class="project">
+            <h3>Application Web E-Commerce Responsive</h3>
+            <p class="dates">Octobre 2023 - Décembre 2023 (2 mois)</p>
+            <p>
+                Conception et réalisation d'un site e-commerce complet avec panier d'achat, gestion de catalogue produits et interface d'administration. Mise en place d'un design responsive adapté à tous les supports (mobile, tablette, desktop). Intégration d'une API de paiement simulée et système de gestion des commandes.
+            </p>
+            <ul class="competences-list">
+                <li>Développement front-end : HTML5, CSS3, JavaScript, Bootstrap</li>
+                <li>Développement back-end : PHP avec architecture MVC</li>
+                <li>Intégration d'API REST et manipulation de données JSON</li>
+                <li>Sécurité web : prévention XSS, CSRF, validation des données</li>
+                <li>Design UX/UI et principes d'accessibilité web (WCAG)</li>
+            </ul>
+            <a href="#" class="proof-link">🔗 Voir le code sur GitHub</a>
+        </div>
+
+        <h2>Projets Personnels</h2>
+
+        <div class="project">
+            <h3>Bot Discord de Gestion de Communauté</h3>
+            <p class="dates">Janvier 2024 - Février 2024</p>
+            <p>
+                Développement d'un bot Discord multifonction pour gérer une communauté de joueurs. Fonctionnalités : système de modération automatique, commandes personnalisées, statistiques de serveur, intégration d'API de jeux vidéo pour afficher les statistiques des joueurs. Le bot est actuellement utilisé par plus de 500 membres.
+            </p>
+            <ul class="competences-list">
+                <li>Programmation en Python avec la bibliothèque discord.py</li>
+                <li>Utilisation d'API externes et traitement de données JSON</li>
+                <li>Gestion de base de données SQLite pour la persistance des données</li>
+                <li>Déploiement sur serveur cloud et maintenance continue</li>
+            </ul>
+            <a href="#" class="proof-link">💻 Voir le projet sur GitHub</a>
+        </div>
+
+        <div class="project">
+            <h3>Portfolio Personnel Interactif</h3>
+            <p class="dates">Août 2024 - Septembre 2024</p>
+            <p>
+                Création de mon portfolio web personnel avec animations et interactions dynamiques. Intégration de mes projets avec galerie interactive, formulaire de contact fonctionnel et optimisation SEO. Le site est entièrement responsive et optimisé pour les performances.
+            </p>
+            <ul class="competences-list">
+                <li>Design moderne avec animations CSS et JavaScript</li>
+                <li>Optimisation des performances (score Lighthouse > 90)</li>
+                <li>Référencement naturel (SEO) et balises meta optimisées</li>
+                <li>Déploiement et hébergement web</li>
+            </ul>
+            <a href="#" class="proof-link">🌐 Visiter le site</a>
+        </div>
+    </section>
+
+    <!-- Page Compétences -->
+    <section id="competences">
+        <h1>Compétences</h1>
+
+        <h2>Cartographie des Compétences Informatiques</h2>
+        <div class="mindmap-container">
+            <p><strong>Mindmap de mes compétences techniques</strong></p>
+            <div class="mindmap-placeholder">
+                <p>📊 Insérez ici votre Mindmap<br>(créée avec MindMeister, Coggle, XMind...)<br>Format recommandé : PNG ou SVG</p>
+            </div>
+        </div>
+
+        <h2>Compétences Techniques (Savoir-faire)</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Langages de Programmation</h3>
+                <ul>
+                    <li>Java (Avancé)</li>
+                    <li>Python (Intermédiaire)</li>
+                    <li>JavaScript (Intermédiaire)</li>
+                    <li>PHP (Intermédiaire)</li>
+                    <li>C (Débutant)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Développement Web</h3>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>React (bases)</li>
+                    <li>Bootstrap / Tailwind CSS</li>
+                    <li>API REST</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Bases de Données</h3>
+                <ul>
+                    <li>MySQL / MariaDB</li>
+                    <li>PostgreSQL</li>
+                    <li>SQLite</li>
+                    <li>Modélisation (UML, Merise)</li>
+                    <li>Requêtes SQL avancées</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Outils et Méthodologies</h3>
+                <ul>
+                    <li>Git / GitHub</li>
+                    <li>Méthode Agile (Scrum)</li>
+                    <li>Docker (bases)</li>
+                    <li>VS Code / IntelliJ IDEA</li>
+                    <li>Figma / Adobe XD</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Compétences Transversales (Savoir-être)</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Travail d'Équipe</h3>
+                <ul>
+                    <li>Communication efficace</li>
+                    <li>Collaboration et entraide</li>
+                    <li>Écoute active</li>
+                    <li>Gestion de conflits</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Organisation</h3>
+                <ul>
+                    <li>Gestion du temps</li>
+                    <li>Priorisation des tâches</li>
+                    <li>Respect des délais</li>
+                    <li>Rigueur et précision</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Adaptation</h3>
+                <ul>
+                    <li>Apprentissage rapide</li>
+                    <li>Curiosité technique</li>
+                    <li>Résolution de problèmes</li>
+                    <li>Veille technologique</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Langues</h3>
+                <ul>
+                    <li>Français (Langue maternelle)</li>
+                    <li>Anglais (B2 - Intermédiaire)</li>
+                    <li>Documentation technique en anglais</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Contact -->
+    <section id="contact">
+        <h1>Contact</h1>
+        
+        <div class="contact-info">
+            <h2>Restons en contact</h2>
+            <p>N'hésitez pas à me contacter pour toute opportunité professionnelle ou collaboration sur un projet.</p>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <div>
+                    <strong>Email universitaire :</strong><br>
+                    <a href="mailto:prenom.nom@edu.univ-exemple.fr">prenom.nom@edu.univ-exemple.fr</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">💼</span>
+                <div>
+                    <strong>LinkedIn :</strong><br>
+                    <a href="https://www.linkedin.com/in/prenom-nom" target="_blank">linkedin.com/in/prenom-nom</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <div>
+                    <strong>Téléphone :</strong><br>
+                    <a href="tel:+33612345678">06 12 34 56 78</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">💻</span>
+                <div>
+                    <strong>GitHub :</strong><br>
+                    <a href="https://github.com/votre-username" target="_blank">github.com/votre-username</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Afficher la section demandée
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Scroller en haut de la page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Navigation au clic
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                showSection(sectionId);
+            });
+        });
+    </script>
+</body>
+</html>
