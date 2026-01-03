@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prénom NOM - Développeur Web Junior</title>
+    <title>Martin Morenvillé - Développeur Web Junior</title>
     <style>
         * {
             margin: 0;
@@ -62,8 +62,10 @@
             display: block;
         }
 
-        /* Masquer le hero-content sur toutes les pages sauf accueil */
-        section:not(#accueil) .hero-content {
+        /* Masquer le contenu hero sur toutes les pages sauf accueil */
+        section:not(#accueil) .hero-content,
+        section:not(#accueil) .hero-subtitle,
+        section:not(#accueil) .intro-text {
             display: none !important;
         }
 
@@ -141,11 +143,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Masquer le fond sur les autres pages */
-        section:not(#accueil) {
-            background: #f5f7fa;
-        }
-
         /* Cartes pour formations et expériences */
         .card {
             background: white;
@@ -204,6 +201,14 @@
             color: #3498db;
         }
 
+        .project-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
         .competences-list {
             list-style: none;
             padding-left: 0;
@@ -225,7 +230,7 @@
 
         .proof-link {
             display: inline-block;
-            margin-top: 1rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
             padding: 0.7rem 1.5rem;
             background: #3498db;
             color: white;
@@ -371,11 +376,11 @@
     <!-- Page Accueil -->
     <section id="accueil" class="active">
         <div class="hero-content">
-            <h1>Prénom NOM</h1>
+            <h1>Martin Morenvillé</h1>
             <p class="hero-subtitle">Développeur Web Junior</p>
             <div class="intro-text">
                 <p>
-                    Passionné par le développement informatique, je suis actuellement en formation BUT Informatique avec une spécialisation en développement web et applications. Mon parcours m'a permis d'acquérir des compétences solides en programmation, gestion de projets et travail collaboratif. Je recherche activement des opportunités pour mettre en pratique mes connaissances et continuer à évoluer dans le domaine du développement logiciel. Mon objectif est de rejoindre une équipe dynamique où je pourrai contribuer à des projets innovants tout en développant mon expertise technique. Je me distingue par ma capacité d'adaptation, mon souci du détail et ma volonté constante d'apprendre et de progresser dans les technologies émergentes.
+                    Passionné par le développement informatique, je suis actuellement en formation BUT Informatique à l'IUT de Lille avec une spécialisation en développement web et applications. Mon parcours m'a permis d'acquérir des compétences solides en programmation orientée objet, gestion de bases de données, développement web et gestion de projets collaboratifs. À travers mes projets académiques, j'ai développé des applications complètes, de la modélisation à la mise en production, en passant par l'optimisation algorithmique et la conception d'interfaces utilisateur. Je recherche activement des opportunités pour mettre en pratique mes connaissances et continuer à évoluer dans le domaine du développement logiciel. Mon objectif est de rejoindre une équipe dynamique où je pourrai contribuer à des projets innovants tout en développant mon expertise technique. Je me distingue par ma capacité d'adaptation, mon autonomie, mon souci du détail et ma volonté constante d'apprendre et de progresser dans les technologies émergentes.
                 </p>
             </div>
         </div>
@@ -390,66 +395,70 @@
             <div class="card-header">
                 <div>
                     <h3>Bachelor Universitaire de Technologie (BUT) Informatique</h3>
-                    <p class="dates">2023 - 2026</p>
+                    <p class="dates">2024 - 2027 (en cours)</p>
                 </div>
-                <div class="logo-placeholder">Logo IUT</div>
+                <div class="logo-placeholder">Logo IUT Lille</div>
             </div>
-            <p>IUT [Nom de la ville] - Parcours Réalisation d'applications : conception, développement, validation</p>
-            <p>Apprentissage des fondamentaux de la programmation, des bases de données, du développement web et mobile, ainsi que de la gestion de projets informatiques.</p>
+            <p><strong>IUT de Lille - Université de Lille</strong></p>
+            <p>Parcours Réalisation d'applications : conception, développement, validation</p>
+            <p>Formation complète couvrant la programmation orientée objet (Java), le développement web (HTML/CSS/JavaScript/PHP), les bases de données relationnelles (SQL, Access), l'administration système (Linux/Debian), les algorithmes et structures de données, ainsi que la gestion de projets informatiques en équipe. Acquisition de compétences en modélisation UML, versionnement Git, et méthodologies agiles.</p>
         </div>
 
         <div class="card">
             <div class="card-header">
                 <div>
                     <h3>Baccalauréat Général</h3>
-                    <p class="dates">2020 - 2023</p>
+                    <p class="dates">2021 - 2024</p>
                 </div>
                 <div class="logo-placeholder">Logo Lycée</div>
             </div>
-            <p>Lycée [Nom du lycée] - Spécialités : Mathématiques et Numérique et Sciences Informatiques (NSI)</p>
-            <p>Mention : [Préciser la mention obtenue]</p>
+            <p>Spécialités : Mathématiques et Numérique et Sciences Informatiques (NSI)</p>
+            <p>Mention obtenue : [À compléter]</p>
         </div>
     </section>
 
     <!-- Page Expériences -->
     <section id="experiences">
         <h1>Expériences Professionnelles</h1>
-        <p style="margin-bottom: 2rem;">Mes stages, projets et expériences dans le domaine informatique.</p>
+        <p style="margin-bottom: 2rem;">Mes projets tutorés et expériences dans le domaine informatique.</p>
         
         <div class="card">
             <div class="card-header">
                 <div>
-                    <h3>Stage Développeur Web</h3>
-                    <p class="dates">Juin 2024 - Août 2024 (2 mois)</p>
+                    <h3>SAÉ 2.02 - Exploration Algorithmique</h3>
+                    <p class="dates">Janvier 2025 - Mars 2025</p>
                 </div>
             </div>
-            <p><strong>Entreprise [Nom de l'entreprise]</strong> - [Ville]</p>
+            <p><strong>IUT de Lille - Projet en équipe</strong></p>
             <p>
-                Participation au développement d'une application web pour la gestion des stocks. Mise en place de l'interface utilisateur avec React et intégration d'une API REST. Travail en méthode agile avec l'équipe de développement. Rédaction de documentation technique et tests unitaires.
+                Conception d'un outil d'aide aux professeurs pour organiser des séjours linguistiques entre adolescents de quatre pays (France, Italie, Espagne, Allemagne). Développement d'algorithmes d'affectation sur graphes pondérés pour créer des paires hôte-visiteur optimales en respectant des contraintes rédhibitoires (allergies, régimes alimentaires) et en maximisant les affinités (hobbies, âge, genre). Création d'une interface graphique en JavaFX permettant de visualiser et ajuster les affectations. Gestion du projet avec GitLab et méthode agile.
             </p>
         </div>
 
         <div class="card">
             <div class="card-header">
                 <div>
-                    <h3>Projet Tutoré - Développement d'Application</h3>
-                    <p class="dates">Septembre 2023 - Janvier 2024</p>
+                    <h3>SAÉ 1.05-1.06 - Plateforme de Covoiturage</h3>
+                    <p class="dates">Octobre 2024 - Décembre 2024</p>
                 </div>
             </div>
-            <p><strong>IUT Informatique</strong></p>
+            <p><strong>IUT de Lille - Projet en trinôme</strong></p>
             <p>
-                Conception et développement d'une application de gestion de bibliothèque en équipe de 4 personnes. Utilisation de Java, base de données MySQL et mise en place d'une interface graphique JavaFX. Gestion du projet avec Git et méthode Scrum.
+                Développement d'une plateforme web de mobilité durable pour une entreprise fictive, permettant le covoiturage et la location de véhicules non polluants (vélos, trottinettes). Création de maquettes graphiques, développement d'un site web statique en HTML/CSS, et production d'une newsletter de communication interne. Analyse stratégique avec diagnostic SWOT et sensibilisation aux enjeux écologiques.
             </p>
         </div>
 
         <div class="card">
             <div class="card-header">
                 <div>
-                    <h3>Bénévolat - Association [Nom]</h3>
-                    <p class="dates">Depuis Septembre 2023</p>
+                    <h3>SAÉ 1.03 + 2.03 - Administration Système Linux</h3>
+                    <p class="dates">Septembre 2024 - Janvier 2025</p>
                 </div>
             </div>
-            <p>Aide à la maintenance du site web de l'association et formation des membres aux outils numériques.</p>
+            <p><strong>IUT de Lille</strong></p>
+            <p>
+                Installation et configuration complète d'une machine virtuelle Debian 64-bit avec VirtualBox. Configuration des services essentiels (réseau, SSH, développement), gestion des utilisateurs et droits (sudo), configuration de partitions et GRUB, utilisation d'apt pour la gestion des paquets, et mise en place d'outils de versionnement (Git, Gitk, Git-GUI). Rédaction de documentations techniques détaillées.
+            </p>
         </div>
     </section>
 
@@ -461,236 +470,115 @@
         <h2>Projets BUT Informatique</h2>
 
         <div class="project">
-            <h3>Système de Gestion de Base de Données pour PME</h3>
-            <p class="dates">Mars 2024 - Mai 2024 (3 mois)</p>
+            <h3>SAÉ 2.02 : Outil d'Affectation pour Séjours Linguistiques</h3>
+            <p class="dates">Janvier 2025 - Mars 2025 (2 mois)</p>
             <p>
-                Développement d'une application complète de gestion de données clients pour une petite entreprise locale. Création du schéma de base de données, implémentation des requêtes SQL optimisées, développement de l'interface utilisateur et mise en place d'un système d'authentification sécurisé. Le projet a été réalisé en équipe de trois personnes avec une méthodologie agile.
+                Conception et développement d'une application Java complète utilisant des algorithmes de graphes pour optimiser l'affectation de binômes lors de séjours linguistiques internationaux. Le système collecte des données via formulaires CSV, modélise les relations possibles entre adolescents avec un graphe pondéré, puis génère des paires optimales en respectant des contraintes strictes et en maximisant les affinités. L'interface JavaFX permet aux enseignants de visualiser, ajuster manuellement et exporter les résultats. Un système de gestion d'historique évite les appariements déjà effectués.
             </p>
             <ul class="competences-list">
-                <li>Conception et modélisation de bases de données relationnelles (UML, Merise)</li>
-                <li>Développement en SQL (MySQL) avec requêtes complexes et procédures stockées</li>
-                <li>Programmation orientée objet en Java</li>
-                <li>Gestion de projet agile (Scrum) et utilisation de Git pour le versionnement</li>
-                <li>Documentation technique et rédaction de cahier des charges</li>
+                <li>Programmation orientée objet avancée en Java avec architecture MVC</li>
+                <li>Conception et implémentation d'algorithmes de graphes (affectation optimale, recherche de chemins)</li>
+                <li>Développement d'interfaces graphiques ergonomiques avec JavaFX</li>
+                <li>Manipulation de fichiers CSV (import/export) et sérialisation binaire</li>
+                <li>Gestion de projet collaborative avec GitLab (issues, merge requests, CI/CD)</li>
+                <li>Tests unitaires et débogage systématique</li>
             </ul>
-            <a href="#" class="proof-link">📄 Voir le document de preuve (PDF)</a>
+            <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="proof-link" target="_blank">💻 Voir le projet sur GitLab</a>
+            <a href="https://drive.google.com/file/d/1YGtUfjavG5H3k3n9L2VUzXYuxMrgmn8q/view" class="proof-link" target="_blank">📄 Rapport technique (PDF)</a>
+            <a href="https://youtu.be/PFescyY0b0g" class="proof-link" target="_blank">🎥 Vidéo de démonstration</a>
         </div>
 
         <div class="project">
-            <h3>Application Web E-Commerce Responsive</h3>
-            <p class="dates">Octobre 2023 - Décembre 2023 (2 mois)</p>
+            <h3>SAÉ 1.04 et 2.04 : Système de Gestion de Base de Données</h3>
+            <p class="dates">Octobre 2024 - Février 2025 (4 mois)</p>
             <p>
-                Conception et réalisation d'un site e-commerce complet avec panier d'achat, gestion de catalogue produits et interface d'administration. Mise en place d'un design responsive adapté à tous les supports (mobile, tablette, desktop). Intégration d'une API de paiement simulée et système de gestion des commandes.
+                Projet en deux phases : création d'une base de données complète pour une entreprise fictive avec modélisation conceptuelle (MCD), développement de requêtes SQL complexes, formulaires et états sous Access. La seconde phase consistait en une analyse statistique approfondie des Jeux Olympiques à partir d'une base de données fournie. Extraction de données via requêtes SQL pour analyser la répartition des médailles, l'évolution de la participation féminine et les caractéristiques des athlètes, avec production de graphiques et d'un rapport argumenté.
             </p>
             <ul class="competences-list">
-                <li>Développement front-end : HTML5, CSS3, JavaScript, Bootstrap</li>
-                <li>Développement back-end : PHP avec architecture MVC</li>
-                <li>Intégration d'API REST et manipulation de données JSON</li>
-                <li>Sécurité web : prévention XSS, CSRF, validation des données</li>
-                <li>Design UX/UI et principes d'accessibilité web (WCAG)</li>
+                <li>Modélisation conceptuelle et logique de bases de données (MCD, MLD avec méthode Merise)</li>
+                <li>Conception et optimisation de requêtes SQL avancées (jointures, agrégations, sous-requêtes)</li>
+                <li>Développement de formulaires, états et requêtes sous Microsoft Access</li>
+                <li>Analyse statistique de données avec représentations graphiques</li>
+                <li>Manipulation de tableurs pour l'analyse de données volumineuses</li>
+                <li>Rédaction de rapports techniques structurés avec analyse économique</li>
             </ul>
-            <a href="#" class="proof-link">🔗 Voir le code sur GitHub</a>
-        </div>
-
-        <h2>Projets Personnels</h2>
-
-        <div class="project">
-            <h3>Bot Discord de Gestion de Communauté</h3>
-            <p class="dates">Janvier 2024 - Février 2024</p>
-            <p>
-                Développement d'un bot Discord multifonction pour gérer une communauté de joueurs. Fonctionnalités : système de modération automatique, commandes personnalisées, statistiques de serveur, intégration d'API de jeux vidéo pour afficher les statistiques des joueurs. Le bot est actuellement utilisé par plus de 500 membres.
-            </p>
-            <ul class="competences-list">
-                <li>Programmation en Python avec la bibliothèque discord.py</li>
-                <li>Utilisation d'API externes et traitement de données JSON</li>
-                <li>Gestion de base de données SQLite pour la persistance des données</li>
-                <li>Déploiement sur serveur cloud et maintenance continue</li>
-            </ul>
-            <a href="#" class="proof-link">💻 Voir le projet sur GitHub</a>
+            <a href="https://drive.google.com/file/d/186Nza2w1EVAxVIKBPnQahk_5l0Dqpz6N/view" class="proof-link" target="_blank">📄 Base de données Access</a>
+            <a href="https://drive.google.com/file/d/1wwEK3p38saa68FJ81yWN2y-H6cvNk7oG/view" class="proof-link" target="_blank">📊 Analyse statistique JO</a>
+            <a href="https://drive.google.com/file/d/1G3I6cJZST95_DEZ2t47oBI3iHF-jsl7G/view" class="proof-link" target="_blank">📑 Rapport entreprise</a>
+            <a href="https://docs.google.com/document/d/1-fZTMWzL-40a1DoaLrz3_2ZKlRbhbRLu/edit" class="proof-link" target="_blank">📈 Rapport statistique</a>
         </div>
 
         <div class="project">
-            <h3>Portfolio Personnel Interactif</h3>
-            <p class="dates">Août 2024 - Septembre 2024</p>
+            <h3>SAÉ 1.05-1.06 : Plateforme Web de Covoiturage</h3>
+            <p class="dates">Octobre 2024 - Décembre 2024 (2 mois)</p>
             <p>
-                Création de mon portfolio web personnel avec animations et interactions dynamiques. Intégration de mes projets avec galerie interactive, formulaire de contact fonctionnel et optimisation SEO. Le site est entièrement responsive et optimisé pour les performances.
+                Développement d'une plateforme web complète de mobilité durable dans le cadre d'une démarche écologique pour une entreprise. Le projet incluait l'analyse des besoins clients, la création de maquettes graphiques, le développement front-end en HTML/CSS d'un site statique responsive, et la production d'une newsletter de communication interne. Mise en place d'une stratégie de communication et réalisation d'un diagnostic stratégique (SWOT) pour évaluer la viabilité du projet.
             </p>
             <ul class="competences-list">
-                <li>Design moderne avec animations CSS et JavaScript</li>
-                <li>Optimisation des performances (score Lighthouse > 90)</li>
-                <li>Référencement naturel (SEO) et balises meta optimisées</li>
-                <li>Déploiement et hébergement web</li>
+                <li>Développement web front-end statique (HTML5/CSS3)</li>
+                <li>Conception de maquettes graphiques et design d'interface utilisateur</li>
+                <li>Analyse et synthèse de besoins clients</li>
+                <li>Travail collaboratif en trinôme avec répartition des tâches</li>
+                <li>Création de supports de communication (newsletter, contenus promotionnels)</li>
+                <li>Analyse stratégique avec méthode SWOT et sensibilisation écologique</li>
             </ul>
-            <a href="#" class="proof-link">🌐 Visiter le site</a>
+            <a href="https://docs.google.com/document/d/128DRce1Xm-GnvPauIqIBGJJnvQFcDPUu/edit" class="proof-link" target="_blank">📰 Newsletter du projet</a>
+        </div>
+
+        <div class="project">
+            <h3>SAÉ 1.03 + 2.03 : Installation Machine Virtuelle Linux</h3>
+            <p class="dates">Septembre 2024 - Janvier 2025 (4 mois)</p>
+            <p>
+                Projet d'administration système complet consistant à créer une machine virtuelle avec VirtualBox, installer et configurer Debian 64-bit, puis mettre en place tous les services essentiels pour un environnement de développement professionnel. Configuration du réseau, du SSH pour l'accès distant, gestion complète des utilisateurs et des droits (sudo), configuration de partitions et du bootloader GRUB, installation de logiciels via apt, et mise en place d'outils de versionnement Git. Production de documentations techniques détaillées pour chaque étape.
+            </p>
+            <ul class="competences-list">
+                <li>Virtualisation avec VirtualBox (création, configuration, snapshots)</li>
+                <li>Installation et configuration d'un système GNU/Linux (Debian)</li>
+                <li>Administration système : gestion utilisateurs, groupes, permissions (chmod, chown)</li>
+                <li>Configuration réseau et services système (systemd, SSH, firewall)</li>
+                <li>Gestion de partitions et configuration de GRUB</li>
+                <li>Utilisation de gestionnaires de paquets (apt) et compilation de sources</li>
+                <li>Maîtrise de Git pour le versionnement de code (commit, branch, merge)</li>
+                <li>Rédaction de documentation technique complète</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1owM-ZCsC4-K0xdl1UMlGARQBIbAmVACN/view" class="proof-link" target="_blank">📄 Documentation technique (Partie 1)</a>
+            <a href="https://drive.google.com/file/d/1Myy-chaScV2kq8LXUsF0U4JV_ZUuhOvg/view" class="proof-link" target="_blank">📄 Documentation technique (Partie 2)</a>
+        </div>
+
+        <h2>Projets de Communication et Gestion</h2>
+
+        <div class="project">
+            <h3>SAÉ 2.06 : Vidéo de Vulgarisation Scientifique</h3>
+            <p class="dates">Mars 2025 (1 mois)</p>
+            <p>
+                Création d'une vidéo pédagogique de vulgarisation scientifique sur l'histoire des débuts de la 3D dans les jeux vidéo. Le projet retrace l'évolution technologique depuis Maze War jusqu'aux innovations d'ID Software et ses membres fondateurs. Production complète incluant recherche documentaire approfondie, rédaction du script, enregistrement de la voix off avec Audacity, sélection de visuels historiques, et montage vidéo avec Clip Champ. L'objectif était de transmettre des notions techniques et historiques à un public non connaisseur de manière accessible et engageante.
+            </p>
+            <ul class="competences-list">
+                <li>Recherche documentaire sur des sujets techniques et historiques en informatique</li>
+                <li>Vulgarisation de concepts informatiques complexes pour un public large</li>
+                <li>Montage vidéo avec logiciel Clip Champ (transitions, effets, synchronisation)</li>
+                <li>Enregistrement et traitement audio de voix off avec Audacity</li>
+                <li>Narration dynamique et storytelling pédagogique</li>
+                <li>Travail collaboratif avec répartition des rôles (recherche, script, montage)</li>
+            </ul>
+            <a href="https://www.youtube.com/watch?v=qVRvwG0NJmM" class="proof-link" target="_blank">🎬 Voir la vidéo sur YouTube</a>
+        </div>
+
+        <div class="project">
+            <h3>SAÉ 2.05 : Gestion de Projet - Création d'Entreprise</h3>
+            <p class="dates">Janvier 2025 - Février 2025 (2 mois)</p>
+            <p>
+                Projet de simulation de création d'entreprise dans le secteur informatique. Élaboration d'un dossier complet comprenant la répartition des rôles au sein de l'équipe, la présentation de l'idée du projet, la description détaillée de l'offre commerciale, une analyse approfondie de la concurrence, l'identification de la clientèle cible avec personas, la planification complète du projet avec diagramme de Gantt, la conception d'un plan de communication, le choix du mode de financement, et la création d'une plaquette commerciale professionnelle avec logo et slogan.
+            </p>
+            <ul class="competences-list">
+                <li>Gestion de projet avec planification Gantt et suivi des jalons</li>
+                <li>Analyse de marché et étude de la concurrence</li>
+                <li>Identification de besoins clients et création de personas</li>
+                <li>Élaboration d'une offre commerciale cohérente et compétitive</li>
+                <li>Création de supports visuels professionnels (plaquette, logo, charte graphique)</li>
+                <li>Travail collaboratif avec répartition des tâches et communication d'équipe</li>
+                <li>Rédaction d'un dossier structuré et argumenté</li>
+            </ul>
+            <a href="https://drive.google.com/file/d/1z2ewCib1lK7M7trZiufJp9vx6ybCPQvo/view" class="proof-link" target="_blank">📋 Dossier complet du projet</a>
         </div>
     </section>
-
-    <!-- Page Compétences -->
-    <section id="competences">
-        <h1>Compétences</h1>
-        <p style="margin-bottom: 2rem;">Synthèse de mes compétences techniques et transversales acquises durant ma formation.</p>
-
-        <h2>Cartographie des Compétences Informatiques</h2>
-        <div class="mindmap-container">
-            <p><strong>Mindmap de mes compétences techniques</strong></p>
-            <div class="mindmap-placeholder">
-                <p>📊 Insérez ici votre Mindmap<br>(créée avec MindMeister, Coggle, XMind...)<br>Format recommandé : PNG ou SVG</p>
-            </div>
-        </div>
-
-        <h2>Compétences Techniques (Savoir-faire)</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Langages de Programmation</h3>
-                <ul>
-                    <li>Java (Avancé)</li>
-                    <li>Python (Intermédiaire)</li>
-                    <li>JavaScript (Intermédiaire)</li>
-                    <li>PHP (Intermédiaire)</li>
-                    <li>C (Débutant)</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Développement Web</h3>
-                <ul>
-                    <li>HTML5 / CSS3</li>
-                    <li>React (bases)</li>
-                    <li>Bootstrap / Tailwind CSS</li>
-                    <li>API REST</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Bases de Données</h3>
-                <ul>
-                    <li>MySQL / MariaDB</li>
-                    <li>PostgreSQL</li>
-                    <li>SQLite</li>
-                    <li>Modélisation (UML, Merise)</li>
-                    <li>Requêtes SQL avancées</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Outils et Méthodologies</h3>
-                <ul>
-                    <li>Git / GitHub</li>
-                    <li>Méthode Agile (Scrum)</li>
-                    <li>Docker (bases)</li>
-                    <li>VS Code / IntelliJ IDEA</li>
-                    <li>Figma / Adobe XD</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2>Compétences Transversales (Savoir-être)</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Travail d'Équipe</h3>
-                <ul>
-                    <li>Communication efficace</li>
-                    <li>Collaboration et entraide</li>
-                    <li>Écoute active</li>
-                    <li>Gestion de conflits</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Organisation</h3>
-                <ul>
-                    <li>Gestion du temps</li>
-                    <li>Priorisation des tâches</li>
-                    <li>Respect des délais</li>
-                    <li>Rigueur et précision</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Adaptation</h3>
-                <ul>
-                    <li>Apprentissage rapide</li>
-                    <li>Curiosité technique</li>
-                    <li>Résolution de problèmes</li>
-                    <li>Veille technologique</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Langues</h3>
-                <ul>
-                    <li>Français (Langue maternelle)</li>
-                    <li>Anglais (B2 - Intermédiaire)</li>
-                    <li>Documentation technique en anglais</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Page Contact -->
-    <section id="contact">
-        <h1>Contact</h1>
-        <p style="margin-bottom: 2rem;">Pour toute opportunité professionnelle ou collaboration, n'hésitez pas à me contacter.</p>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <span class="contact-icon">📧</span>
-                <div>
-                    <strong>Email universitaire :</strong><br>
-                    <a href="mailto:prenom.nom@edu.univ-exemple.fr">prenom.nom@edu.univ-exemple.fr</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <span class="contact-icon">💼</span>
-                <div>
-                    <strong>LinkedIn :</strong><br>
-                    <a href="https://www.linkedin.com/in/prenom-nom" target="_blank">linkedin.com/in/prenom-nom</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <span class="contact-icon">📱</span>
-                <div>
-                    <strong>Téléphone :</strong><br>
-                    <a href="tel:+33612345678">06 12 34 56 78</a>
-                </div>
-            </div>
-
-            <div class="contact-item">
-                <span class="contact-icon">💻</span>
-                <div>
-                    <strong>GitHub :</strong><br>
-                    <a href="https://github.com/votre-username" target="_blank">github.com/votre-username</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        function showSection(sectionId) {
-            // Masquer toutes les sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Afficher la section demandée
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Scroller en haut de la page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Navigation au clic
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const sectionId = link.getAttribute('href').substring(1);
-                showSection(sectionId);
-            });
-        });
-    </script>
-</body>
-</html>
