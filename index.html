@@ -31,7 +31,7 @@
             font-family: 'Inter', 'Segoe UI', sans-serif;
             background: var(--bg-dark);
             background-image: var(--gradient-bg);
-            background-attachment: fixed; /* Le fond reste fixe quand on scroll */
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
@@ -92,20 +92,19 @@
 
         /* --- SECTIONS PLEIN ÉCRAN --- */
         section {
-            min-height: 100vh; /* Prend toute la hauteur de l'écran */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centre verticalement */
+            justify-content: center;
             align-items: center;
-            padding: 6rem 5% 4rem 5%; /* Marge haut pour le menu */
+            padding: 6rem 5% 4rem 5%;
             position: relative;
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        /* Conteneur large pour le contenu */
         .container {
             width: 100%;
-            max-width: 1400px; /* Utilise bien la largeur sur grand écran */
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -128,7 +127,6 @@
             display: inline-block;
         }
         
-        /* Petit trait déco sous les H2 */
         h2::after {
             content: '';
             display: block;
@@ -149,7 +147,7 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            max-width: 800px; /* Évite les lignes trop longues illisibles */
+            max-width: 800px;
         }
 
         /* --- CARTES GLASSMORPHISM --- */
@@ -173,7 +171,7 @@
             border-radius: 16px;
             padding: 2.5rem;
             transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            height: 100%; /* Cartes de même hauteur */
+            height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -202,23 +200,10 @@
             font-size: 0.9rem;
         }
 
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        /* --- LISTES & BOUTONS --- */
         .competences-list {
             list-style: none;
             padding: 0;
-            margin-bottom: auto; /* Pousse les boutons vers le bas */
+            margin-bottom: auto;
         }
 
         .competences-list li {
@@ -286,7 +271,7 @@
         /* --- MINDMAP --- */
         .mindmap-area {
             width: 100%;
-            height: 500px;
+            height: 400px;
             background: rgba(255,255,255,0.03);
             border: 2px dashed rgba(255,255,255,0.1);
             border-radius: 16px;
@@ -326,14 +311,14 @@
                 <p style="color: var(--accent); font-family: monospace; margin-bottom: 1rem;">Bonjour, je suis</p>
                 <h1>Martin Morenvillé.</h1>
                 <h2 style="font-size: 2rem; border: none; margin: 0; color: var(--text-muted); display: block;">
-                    Développeur Web Junior.
+                    Étudiant en BUT Informatique.
                 </h2>
                 <br>
                 <p>
-                    Étudiant passionné en BUT Informatique à l'IUT de Lille. Je transforme des concepts complexes en applications performantes et intuitives. À la recherche d'une alternance ou d'un stage pour mettre mon énergie au service de projets innovants.
+                    Actuellement en 2ème année à l'IUT de Lille, je suis passionné par le développement d'applications et la programmation orientée objet. Je recherche un stage pour mettre mes compétences en Java et développement web au service de projets concrets.
                 </p>
                 <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="#realisations" class="btn-accent">Voir mes projets</a>
+                    <a href="#realisations" class="btn-accent">Voir mes réalisations</a>
                     <a href="#contact" class="btn-accent" style="border-color: var(--text-muted); color: var(--text-muted);">Me contacter</a>
                 </div>
             </div>
@@ -352,15 +337,15 @@
                     <div class="card-header">
                         <div>
                             <h3>BUT Informatique</h3>
-                            <p style="color: var(--accent);">IUT de Lille - Université de Lille</p>
+                            <p style="color: var(--accent);">IUT de Lille</p>
                         </div>
-                        <span class="dates">2024 - 2027</span>
+                        <span class="dates">En cours</span>
                     </div>
-                    <p>Parcours "Réalisation d'applications : conception, développement, validation".</p>
+                    <p>2ème année. Parcours Réalisation d'applications : conception, développement, validation.</p>
                     <ul class="competences-list">
-                        <li>Architecture Logicielle & Design Patterns</li>
-                        <li>Développement Full Stack</li>
-                        <li>Gestion de projet Agile (Scrum)</li>
+                        <li>Développement logiciel et web</li>
+                        <li>Administration système et réseau</li>
+                        <li>Gestion de données et de projet</li>
                     </ul>
                 </div>
 
@@ -368,14 +353,15 @@
                     <div class="card-header">
                         <div>
                             <h3>Baccalauréat Général</h3>
-                            <p style="color: var(--accent);">Lycée [Nom]</p>
+                            <p style="color: var(--accent);">Lycée Raymond Queneau</p>
                         </div>
-                        <span class="dates">2021 - 2024</span>
+                        <span class="dates">2024</span>
                     </div>
-                    <p>Spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Bien.</p>
+                    <p>Villeneuve d'Ascq</p>
                     <ul class="competences-list">
-                        <li>Algorithmique fondamentale</li>
-                        <li>Logique de programmation (Python)</li>
+                        <li>Spécialités : Numérique et Sciences Informatiques (NSI), Anglais Monde Contemporain</li>
+                        <li>Option : Mathématiques complémentaires</li>
+                        <li>Certification Anglais Niveau B2</li>
                     </ul>
                 </div>
             </div>
@@ -388,29 +374,28 @@
             <div class="grid-2">
                 <div class="glass-card">
                     <div class="card-header">
-                        <h3>Développeur Projet (SAÉ 2.02)</h3>
-                        <span class="dates">Jan - Mars 2025</span>
+                        <h3>Projet Plongée</h3>
+                        <span class="dates">2023</span>
                     </div>
-                    <p><strong>IUT de Lille - Projet Académique</strong></p>
-                    <p>Conception d'un outil d'aide à l'organisation de séjours linguistiques scolaires.</p>
+                    <p><strong>Lycée - Classe de Première</strong></p>
+                    <p>Projet interdisciplinaire en sciences de l'environnement.</p>
                     <ul class="competences-list">
-                        <li>Implémentation d'algorithmes de graphes pour l'appariement optimal.</li>
-                        <li>Développement d'une interface graphique JavaFX réactive.</li>
-                        <li>Collaboration technique via GitLab (Issues, MR).</li>
+                        <li>Recherche de financements et de partenariats.</li>
+                        <li>Gestion de projet et communication.</li>
+                        <li>Obtention du niveau 1 de plongée subaquatique (Presqu'île de Giens).</li>
                     </ul>
                 </div>
 
                 <div class="glass-card">
                     <div class="card-header">
-                        <h3>Développeur Web (SAÉ 1.05)</h3>
-                        <span class="dates">Oct - Déc 2024</span>
+                        <h3>Prévention et Secours Civiques</h3>
+                        <span class="dates">2023</span>
                     </div>
-                    <p><strong>Projet Académique</strong></p>
-                    <p>Développement d'une plateforme web pour promouvoir la mobilité durable.</p>
+                    <p><strong>Certification PSC1</strong></p>
+                    <p>Formation aux premiers secours de niveau 1.</p>
                     <ul class="competences-list">
-                        <li>Intégration HTML5/CSS3 responsive.</li>
-                        <li>Création de maquettes UI/UX design.</li>
-                        <li>Analyse stratégique et communication (SWOT, Newsletter).</li>
+                        <li>Maîtrise des gestes de premiers secours.</li>
+                        <li>Réactivité et gestion du stress.</li>
                     </ul>
                 </div>
             </div>
@@ -423,30 +408,41 @@
             <div class="grid-3">
                 
                 <div class="glass-card">
-                    <h3>Affectation Séjours Linguistiques</h3>
+                    <h3>SAE 3.02 : Jeu de Labyrinthe</h3>
                     <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Algo</p>
-                    <p>Application lourde permettant d'optimiser les binômes de correspondants selon des contraintes strictes (allergies) et affinitaires.</p>
+                    <p>Développement d'un jeu de labyrinthe complet avec modes "Libre" et "Progression". Génération procédurale de niveaux (aléatoires et parfaits) et gestion de vues (locale/globale).</p>
+                    <ul class="competences-list">
+                        <li>Algorithmes de génération et de résolution</li>
+                        <li>Architecture MVC & JavaFX</li>
+                        <li>Travail en équipe (Git/GitLab)</li>
+                    </ul>
+                    <div class="btn-group">
+                        <a href="#" class="btn-accent">Voir le sujet (PDF)</a>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3>Projet Agile</h3>
+                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Scrum</p>
+                    <p>Création d'un jeu en Java lors d'une semaine intensive.</p>
+                    <ul class="competences-list">
+                        <li>Développement collaboratif</li>
+                        <li>Méthodologie Agile / Scrum</li>
+                        <li>Livraison rapide de fonctionnalités</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3>Affectation Séjours</h3>
+                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Graphes</p>
+                    <p>Application d'optimisation pour créer des binômes de correspondants selon affinités et contraintes.</p>
+                    <ul class="competences-list">
+                        <li>Graphes pondérés</li>
+                        <li>Interface JavaFX</li>
+                        <li>Tests unitaires</li>
+                    </ul>
                     <div class="btn-group">
                         <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-accent" target="_blank">GitLab</a>
-                        <a href="https://drive.google.com/file/d/1YGtUfjavG5H3k3n9L2VUzXYuxMrgmn8q/view" class="btn-accent" target="_blank">Rapport</a>
-                    </div>
-                </div>
-
-                <div class="glass-card">
-                    <h3>Data Analysis JO</h3>
-                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">SQL & Data</p>
-                    <p>Analyse statistique approfondie des données olympiques : égalité hommes-femmes, répartition des médailles, performances par pays.</p>
-                    <div class="btn-group">
-                        <a href="https://docs.google.com/document/d/1-fZTMWzL-40a1DoaLrz3_2ZKlRbhbRLu/edit" class="btn-accent" target="_blank">Lire l'étude</a>
-                    </div>
-                </div>
-
-                <div class="glass-card">
-                    <h3>Histoire de la 3D</h3>
-                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Vidéo & Com</p>
-                    <p>Vidéo de vulgarisation scientifique retraçant l'évolution technique du moteur de rendu 3D, de Maze War à Quake.</p>
-                    <div class="btn-group">
-                        <a href="https://www.youtube.com/watch?v=qVRvwG0NJmM" class="btn-accent" target="_blank">Voir Vidéo</a>
                     </div>
                 </div>
 
@@ -460,29 +456,39 @@
             
             <div class="mindmap-area">
                 <div style="text-align: center;">
-                    <p style="margin-bottom: 1rem;">[ Espace réservé pour la Mindmap des Compétences ]</p>
-                    <small>Insérez votre image PNG ici</small>
+                    <p style="margin-bottom: 1rem;">[ Insérer votre Mindmap ici ]</p>
+                    <small>Image PNG exportée</small>
                 </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-3">
                 <div class="glass-card">
-                    <h3 style="color: var(--accent);">Savoir-Faire Technique</h3>
+                    <h3 style="color: var(--accent);">Techniques</h3>
                     <ul class="competences-list">
-                        <li><strong>Développement :</strong> Java, Python, HTML5, CSS3, JavaScript</li>
-                        <li><strong>Données :</strong> SQL (Oracle, PostgreSQL), Modélisation (Merise)</li>
-                        <li><strong>Outils :</strong> Git, GitLab CI, Linux (Debian), Bash</li>
-                        <li><strong>IDE :</strong> IntelliJ, VS Code, Eclipse</li>
+                        <li><strong>Langages :</strong> Java (POO), Python</li>
+                        <li><strong>Web :</strong> HTML5, CSS3</li>
+                        <li><strong>Système :</strong> Linux, Windows</li>
+                        <li><strong>Outils :</strong> Git, GitHub/GitLab</li>
                     </ul>
                 </div>
 
                 <div class="glass-card">
-                    <h3 style="color: var(--accent);">Savoir-Être Professionnel</h3>
+                    <h3 style="color: var(--accent);">Langues & Intérêts</h3>
                     <ul class="competences-list">
-                        <li>Travail en équipe & Communication</li>
-                        <li>Méthodologies Agiles (Scrum)</li>
-                        <li>Autonomie et résolution de problèmes</li>
-                        <li>Curiosité technologique et veille</li>
+                        <li><strong>Anglais :</strong> Niveau B2 (Certifié)</li>
+                        <li><strong>Allemand :</strong> Niveau A2</li>
+                        <li><strong>Sports :</strong> Tennis (9 ans de pratique)</li>
+                        <li><strong>Loisirs :</strong> Lecture, Jeux Vidéo (Stratégie)</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3 style="color: var(--accent);">Savoir-Être</h3>
+                    <ul class="competences-list">
+                        <li>Travail en équipe collaboratif</li>
+                        <li>Capacité d'écoute</li>
+                        <li>Communication</li>
+                        <li>Gestion de projet</li>
                     </ul>
                 </div>
             </div>
@@ -491,25 +497,31 @@
 
     <section id="contact">
         <div class="container" style="text-align: center; max-width: 800px;">
-            <p style="color: var(--accent); font-family: monospace;">05. La suite ?</p>
-            <h2 style="font-size: 3.5rem; display: block; margin-bottom: 2rem;">Restons en contact</h2>
+            <p style="color: var(--accent); font-family: monospace;">05. Me joindre</p>
+            <h2 style="font-size: 3rem; display: block; margin-bottom: 2rem;">Contact</h2>
             <p>
-                Je suis actuellement à l'écoute d'opportunités de stage ou d'alternance. Si mon profil vous intéresse, ou si vous avez simplement une question, ma boîte de réception est ouverte !
+                Je suis joignable pour toute opportunité de stage ou collaboration.
             </p>
             
-            <div style="margin: 3rem 0;">
-                <a href="mailto:martin.morenville.etu@univ-lille.fr" class="btn-accent" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
-                    Me dire bonjour
-                </a>
+            <div class="glass-card" style="text-align: left; max-width: 500px; margin: 2rem auto;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">✉</span>
+                        <a href="mailto:martin.morenville@gmail.com" style="color: var(--text-main); text-decoration: none; font-size: 1.1rem;">martin.morenville@gmail.com</a>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">📞</span>
+                        <span style="font-size: 1.1rem;">07 67 30 42 85</span>
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">📍</span>
+                        <span style="font-size: 1.1rem;">35, Allée des Capucines<br>Villeneuve d'Ascq</span>
+                    </li>
+                </ul>
             </div>
 
-            <div style="display: flex; justify-content: center; gap: 3rem; margin-top: 3rem;">
-                <a href="#" class="btn-accent" style="border: none;">LinkedIn</a>
-                <a href="#" class="btn-accent" style="border: none;">06 12 34 56 78</a>
-            </div>
-
-            <footer style="margin-top: 6rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-                <p>&copy; 2026 Martin Morenvillé. Conçu et codé par mes soins.</p>
+            <footer style="margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
+                <p>&copy; 2026 Martin Morenvillé. Tous droits réservés.</p>
             </footer>
         </div>
     </section>
