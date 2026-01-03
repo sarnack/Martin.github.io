@@ -3,312 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Martin Morenvillé</title>
+    <title>Martin Morenvillé | Portfolio</title>
     <style>
-        /* --- CHARTE GRAPHIQUE & ERGONOMIE --- */
+        /* --- VARIABLES & RESET --- */
         :root {
-            --bg-color: #f5f7fa;
-            --text-color: #2c3e50; /* Gris foncé pour lisibilité */
-            --accent-color: #3498db; /* Bleu pour les liens et titres */
-            --white: #ffffff;
+            /* Palette Sombre Nuancée */
+            --bg-dark: #0f1115;
+            --bg-panel: rgba(30, 32, 40, 0.7); /* Effet verre */
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #64ffda; /* Cyan doux, très "tech" et élégant sur fond sombre */
+            --accent-glow: rgba(100, 255, 218, 0.1);
+            --gradient-bg: radial-gradient(circle at 10% 20%, rgb(18, 28, 45) 0%, rgb(15, 17, 21) 90%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scrollbar-width: none; /* Cache la scrollbar Firefox */
+        }
+
+        /* Cache la scrollbar Chrome/Safari */
+        *::-webkit-scrollbar {
+            display: none;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police sobre */
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            font-size: 16px; /* Corps de texte lisible (équivalent 11/12pt) */
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            background-image: var(--gradient-bg);
+            color: var(--text-main);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Empêche le scroll par défaut */
         }
 
-        /* --- NAVIGATION (Visible en permanence) --- */
+        /* --- CONTENEUR HORIZONTAL --- */
+        .horizontal-container {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            height: 100vh;
+            overflow-x: auto; /* Scroll horizontal autorisé */
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory; /* Force l'arrêt sur chaque section */
+            scroll-behavior: smooth;
+        }
+
+        /* --- SECTION PLEIN ÉCRAN --- */
+        section {
+            flex: 0 0 100vw; /* Chaque section prend 100% de la largeur */
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 5%; /* Marge dynamique */
+            position: relative;
+            border-right: 1px solid rgba(255,255,255,0.03); /* Séparateur subtil */
+        }
+
+        /* Contenu interne défilable si trop long (ex: mobile) */
+        .content-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto; /* Scroll vertical interne si besoin */
+            padding: 1rem;
+            /* Masquer scrollbar interne */
+            scrollbar-width: none;
+        }
+
+        /* --- NAVIGATION FLOTTANTE --- */
         nav {
-            background-color: var(--text-color);
-            padding: 1rem 2rem;
-            position: sticky; /* Menu fixe */
-            top: 0;
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 17, 21, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             gap: 2rem;
+            list-style: none;
         }
 
         nav a {
-            color: #ecf0f1;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            text-transform: uppercase;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        /* --- SECTIONS --- */
-        section {
-            padding: 4rem 2rem; /* Espaces blancs pour aérer */
-            max-width: 1100px;
-            margin: 0 auto;
-            min-height: 80vh; /* Limiter le besoin de scroller excessivement */
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        /* --- TYPOGRAPHIE & HIÉRARCHIE (3 Niveaux) --- */
-        h1 {
-            font-size: 2.5rem;
-            color: var(--text-color);
-            margin-bottom: 2rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+        
+        /* Indicateur actif (point) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        nav a:hover::after {
+            transform: translateX(-50%) scale(1);
+        }
+
+        /* --- TYPOGRAPHIE & STYLE --- */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #fff, #a5a5a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 1.8rem;
-            color: #34495e;
-            margin: 3rem 0 1.5rem 0;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
             display: inline-block;
+            position: relative;
         }
 
         h3 {
+            color: var(--text-main);
             font-size: 1.3rem;
-            color: var(--text-color);
             margin-bottom: 0.5rem;
-            font-weight: 600;
         }
 
         p {
-            font-size: 1.05rem;
-            text-align: justify; /* CRITÈRE IMPORTANT : Texte justifié */
-            margin-bottom: 1rem;
-            max-width: 100%;
-        }
-
-        /* --- ACCUEIL --- */
-        #accueil {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(155, 89, 182, 0.05));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 3rem;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 900px;
-        }
-
-        .profile-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .hero-text {
-            text-align: left;
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--accent-color);
-            font-weight: 600;
+            color: var(--text-muted);
+            line-height: 1.7;
+            text-align: justify;
             margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
-        /* --- CARTES (Formations & Expériences) --- */
-        .card {
-            background: var(--white);
+        /* --- ELEMENTS UI (Cartes, Boutons) --- */
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             padding: 2rem;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 4px solid transparent;
-            transition: border-left-color 0.3s;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .card:hover {
-            border-left-color: var(--accent-color);
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-color: var(--accent-glow);
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
         .dates {
-            color: #7f8c8d;
-            font-weight: bold;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            margin-left: 1rem;
+            font-family: monospace;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
         }
 
-        .logo-placeholder {
-            width: 60px;
-            height: 60px;
-            background: #ecf0f1; /* Gris clair */
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #95a5a6;
-            text-align: center;
-            margin-left: 1rem;
-            float: right;
-        }
-        
-        /* Image réelle pour logo */
-        .school-logo {
-            width: 60px;
-            height: auto;
-            margin-left: 1rem;
+        .btn-accent {
+            display: inline-block;
+            margin-top: 1rem;
+            margin-right: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
         }
 
-        /* --- RÉALISATIONS --- */
-        .project {
-            background: var(--white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .project h3 {
-            color: var(--accent-color);
-        }
-
-        .competences-list {
-            list-style: none;
-            margin: 1rem 0;
-            padding-left: 0;
+        .btn-accent:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .competences-list li {
-            padding-left: 1.5rem;
+            list-style: none;
+            padding-left: 1.2rem;
             position: relative;
+            color: var(--text-muted);
             margin-bottom: 0.3rem;
         }
 
-        .competences-list li:before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
+        .competences-list li::before {
+            content: '▹';
             position: absolute;
             left: 0;
-            font-size: 1.2rem;
-            line-height: 1;
+            color: var(--accent);
         }
 
-        /* Bouton Preuve (Bleu) */
-        .proof-link {
-            display: inline-block;
-            margin-top: 1rem;
-            margin-right: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            background-color: var(--accent-color); /* Bleu demandé */
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .proof-link:hover {
-            background-color: #2980b9;
-        }
-
-        /* --- COMPÉTENCES & MINDMAP --- */
-        .mindmap-container {
-            text-align: center;
-            margin: 2rem 0;
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .mindmap-placeholder {
-            width: 100%;
-            height: 400px;
-            background-color: #ecf0f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px dashed #bdc3c7;
-            color: #7f8c8d;
-        }
-
-        /* --- CONTACT --- */
-        .contact-grid {
+        /* --- LAYOUT SPÉCIFIQUE ACCUEIL --- */
+        .hero-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            filter: grayscale(20%); /* Effet artistique */
+            transition: filter 0.5s;
+            box-shadow: 20px 20px 0px rgba(100, 255, 218, 0.05); /* Ombre graphique */
+        }
+        
+        .profile-img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* --- GRILLES RESPONSIVES --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            width: 100%;
         }
 
-        .contact-item {
-            background: var(--white);
-            padding: 2rem;
-            text-align: center;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-visual { order: -1; }
+            h1 { font-size: 2.5rem; }
+            
+            /* Sur tablette/mobile, on garde le horizontal scroll mais on adapte la nav */
+            nav {
+                width: 90%;
+                padding: 0.8rem 1rem;
+            }
+            nav ul { gap: 1rem; font-size: 0.8rem; justify-content: space-between; }
         }
 
-        .contact-item a {
-            color: var(--accent-color);
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
+            /* Mobile : retour vertical possible ou ajustement horizontal */
+            section {
+                padding: 6rem 1rem 2rem 1rem; /* Espace pour le contenu */
             }
-            .hero-text {
-                text-align: center;
-            }
-            nav ul {
-                gap: 1rem;
+            .profile-img { width: 200px; height: 200px; }
+            .horizontal-container {
+                /* Sur très petit écran, le scroll horizontal peut être gênant, 
+                   mais pour respecter la consigne, on le garde */
             }
         }
     </style>
@@ -319,188 +302,193 @@
         <ul>
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#formations">Formations</a></li>
-            <li><a href="#experiences">Expériences</a></li>
-            <li><a href="#realisations">Réalisations</a></li>
-            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#experiences">Exp.</a></li>
+            <li><a href="#realisations">Projets</a></li>
+            <li><a href="#competences">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section id="accueil">
-        <div class="hero-container">
-            <img src="Portrait.jpg" alt="Martin Morenvillé" class="profile-photo">
-            
-            <div class="hero-text">
-                <h1 class="hero-title">Martin Morenvillé</h1>
-                <p class="hero-subtitle">Développeur Web Junior</p>
+    <div class="horizontal-container">
+        
+        <section id="accueil">
+            <div class="content-wrapper">
+                <div class="hero-layout">
+                    <div class="hero-visual">
+                        <img src="Portrait.jpg" alt="Martin Morenvillé" class="profile-img">
+                    </div>
+                    <div>
+                        <p style="color: var(--accent); margin-bottom: 0.5rem; font-family: monospace;">Bonjour, je suis</p>
+                        <h1>Martin Morenvillé.</h1>
+                        <h2 style="font-size: 2.5rem; color: var(--text-muted); border: none; margin: 0;">Je conçois des solutions web.</h2>
+                        <br><br>
+                        <p style="max-width: 600px;">
+                            Étudiant en BUT Informatique passionné par le développement d'applications et l'architecture logicielle. Je transforme des problèmes complexes en interfaces intuitives et performantes.
+                        </p>
+                        <a href="#realisations" class="btn-accent">Découvrir mes projets</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formations">
+            <div class="content-wrapper">
+                <h2>01. Formations</h2>
+                <div class="grid-2">
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3>BUT Informatique</h3>
+                            <span class="dates">2024 - 2027</span>
+                        </div>
+                        <p style="color: var(--accent);">IUT de Lille - Université de Lille</p>
+                        <p>Parcours Réalisation d'applications. Focus sur l'architecture logicielle, le développement Full Stack et la gestion de projets Agiles.</p>
+                    </div>
+
+                    <div class="glass-card">
+                        <div class="card-header">
+                            <h3>Baccalauréat Général</h3>
+                            <span class="dates">2021 - 2024</span>
+                        </div>
+                        <p style="color: var(--accent);">Lycée</p>
+                        <p>Spécialités Mathématiques & NSI (Numérique et Sciences Informatiques). Mention Bien.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiences">
+            <div class="content-wrapper">
+                <h2>02. Expériences</h2>
+                
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>Développeur Projet (SAÉ 2.02)</h3>
+                        <span class="dates">Jan - Mars 2025</span>
+                    </div>
+                    <p><strong>IUT de Lille</strong></p>
+                    <ul class="competences-list">
+                        <li>Conception d'un algorithme d'optimisation (Graphes) pour séjours linguistiques.</li>
+                        <li>Développement d'une interface utilisateur réactive en JavaFX.</li>
+                        <li>Travail collaboratif sous GitLab (Merge Requests, Issues).</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>Développeur Web (SAÉ 1.05)</h3>
+                        <span class="dates">Oct - Déc 2024</span>
+                    </div>
+                    <p><strong>Projet Académique</strong></p>
+                    <ul class="competences-list">
+                        <li>Développement Front-End (HTML5/CSS3) pour une plateforme de covoiturage.</li>
+                        <li>Réalisation de maquettes UI/UX et analyse stratégique.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="realisations">
+            <div class="content-wrapper">
+                <h2>03. Réalisations</h2>
+                <div class="grid-2">
+                    
+                    <div class="glass-card">
+                        <h3>Affectation Séjours Linguistiques</h3>
+                        <p class="dates" style="display:inline-block; margin: 0.5rem 0;">Java & Algorithmique</p>
+                        <p>Application lourde optimisant les binômes de correspondants via des graphes pondérés.</p>
+                        <ul class="competences-list">
+                            <li>Architecture MVC</li>
+                            <li>Tests Unitaires</li>
+                        </ul>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-accent" target="_blank">GitLab</a>
+                            <a href="https://drive.google.com/file/d/1YGtUfjavG5H3k3n9L2VUzXYuxMrgmn8q/view" class="btn-accent" target="_blank">Rapport</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>Data Analysis JO</h3>
+                        <p class="dates" style="display:inline-block; margin: 0.5rem 0;">SQL & Data</p>
+                        <p>Analyse statistique complète des données olympiques (SQL avancé, Access).</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://docs.google.com/document/d/1-fZTMWzL-40a1DoaLrz3_2ZKlRbhbRLu/edit" class="btn-accent" target="_blank">Analyse PDF</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>Histoire de la 3D</h3>
+                        <p class="dates" style="display:inline-block; margin: 0.5rem 0;">Vidéo & Com</p>
+                        <p>Vulgarisation scientifique sur l'évolution technologique du jeu vidéo.</p>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://www.youtube.com/watch?v=qVRvwG0NJmM" class="btn-accent" target="_blank">YouTube</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <div class="content-wrapper">
+                <h2>04. Compétences</h2>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                    <div class="glass-card" style="flex: 1; min-width: 300px; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 300px;">
+                        <div style="border: 2px dashed var(--text-muted); padding: 2rem; color: var(--text-muted); border-radius: 10px;">
+                            [Insérer Image Mindmap]
+                        </div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 300px;">
+                        <div class="glass-card">
+                            <h3 style="color: var(--accent)">Tech Stack</h3>
+                            <ul class="competences-list">
+                                <li>Java / JavaFX</li>
+                                <li>HTML5 / CSS3 / JavaScript</li>
+                                <li>SQL (Oracle, PostgreSQL)</li>
+                                <li>Git & GitHub/GitLab</li>
+                                <li>Linux / Bash</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card">
+                            <h3 style="color: var(--accent)">Soft Skills</h3>
+                            <ul class="competences-list">
+                                <li>Gestion de projet Agile</li>
+                                <li>Communication technique</li>
+                                <li>Travail d'équipe</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="content-wrapper" style="text-align: center; max-width: 600px;">
+                <p style="color: var(--accent); font-family: monospace;">05. La suite ?</p>
+                <h2 style="font-size: 3rem; display: block; margin-bottom: 1rem;">Me Contacter</h2>
                 <p>
-                    Passionné par le développement informatique, je suis actuellement en formation BUT Informatique à l'IUT de Lille. Mon parcours m'a permis d'acquérir des compétences solides en programmation orientée objet, gestion de bases de données et développement web.
+                    Je suis actuellement à la recherche de nouvelles opportunités. Que ce soit pour une question ou juste pour dire bonjour, ma boîte mail est toujours ouverte !
                 </p>
-                <p>
-                    Je recherche activement des opportunités pour mettre en pratique mes connaissances et évoluer dans le développement logiciel. Mon objectif est de rejoindre une équipe dynamique pour contribuer à des projets innovants, en m'appuyant sur mon autonomie et ma rigueur.
-                </p>
+                
+                <div style="margin: 3rem 0;">
+                    <a href="mailto:martin.morenville.etu@univ-lille.fr" class="btn-accent" style="font-size: 1.2rem; padding: 1rem 2rem;">
+                        Envoyer un email
+                    </a>
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem;">
+                    <a href="#" class="btn-accent" style="border: none;">LinkedIn</a>
+                    <a href="#" class="btn-accent" style="border: none;">06 12 34 56 78</a>
+                </div>
+
+                <footer style="margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem;">
+                    <p>&copy; 2026 Martin Morenvillé. Design & Intégration.</p>
+                </footer>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="formations">
-        <h1>Formations</h1>
-        
-        <div class="card">
-            <div class="card-header">
-                <h3>BUT Informatique</h3>
-                <span class="dates">2024 - 2027</span>
-                <div class="logo-placeholder">IUT Lille</div>
-            </div>
-            <p><strong>IUT de Lille - Université de Lille</strong></p>
-            <p>Parcours Réalisation d'applications : conception, développement, validation.</p>
-            <p>Acquisition de compétences en Java, HTML/CSS/JS, SQL, Linux et gestion de projets agiles (Scrum).</p>
-        </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Baccalauréat Général</h3>
-                <span class="dates">2021 - 2024</span>
-                <div class="logo-placeholder">Lycée</div>
-            </div>
-            <p><strong>Lycée [Nom du lycée]</strong></p>
-            <p>Spécialités : Mathématiques et Numérique et Sciences Informatiques (NSI).</p>
-            <p>Mention Bien. Apprentissage des bases de l'algorithmique et de la logique de programmation.</p>
-        </div>
-    </section>
-
-    <section id="experiences">
-        <h1>Expériences</h1>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Développeur Projet (SAÉ 2.02)</h3>
-                <span class="dates">Janvier 2025 - Mars 2025</span>
-            </div>
-            <p><strong>IUT de Lille - Projet Académique</strong></p>
-            <p>Conception d'un outil d'aide à l'organisation de séjours linguistiques.</p>
-            <p>Développement d'algorithmes d'affectation sur graphes pondérés et création d'une interface JavaFX. Travail en équipe avec gestion de versions via GitLab.</p>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h3>Développeur Web (SAÉ 1.05)</h3>
-                <span class="dates">Octobre 2024 - Décembre 2024</span>
-            </div>
-            <p><strong>IUT de Lille - Projet Académique</strong></p>
-            <p>Création d'une plateforme web de mobilité durable (covoiturage).</p>
-            <p>Réalisation de maquettes, développement HTML/CSS et analyse stratégique (SWOT) pour une entreprise fictive.</p>
-        </div>
-    </section>
-
-    <section id="realisations">
-        <h1>Réalisations</h1>
-        <p>Voici une sélection de mes projets informatiques les plus significatifs.</p>
-
-        <div class="project">
-            <h3>Outil d'Affectation pour Séjours Linguistiques</h3>
-            <p><strong>Durée :</strong> 2 mois (2025)</p>
-            <p>Développement d'une application Java lourde permettant de créer des paires optimales de correspondants pour des voyages scolaires, basée sur des contraintes (allergies, âge) et des affinités.</p>
-            <ul class="competences-list">
-                <li>Développement Java & JavaFX (MVC)</li>
-                <li>Algorithmique avancée (Graphes)</li>
-                <li>Gestion de fichiers CSV</li>
-                <li>Tests unitaires</li>
-            </ul>
-            <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="proof-link" target="_blank">Voir le code (GitLab)</a>
-            <a href="https://drive.google.com/file/d/1YGtUfjavG5H3k3n9L2VUzXYuxMrgmn8q/view" class="proof-link" target="_blank">Rapport Technique (PDF)</a>
-        </div>
-
-        <div class="project">
-            <h3>Analyse de Données des Jeux Olympiques</h3>
-            <p><strong>Durée :</strong> 4 mois (2024-2025)</p>
-            <p>Exploitation d'une base de données relationnelle pour analyser les statistiques des JO (médailles, parité). Création de requêtes SQL complexes et reporting.</p>
-            <ul class="competences-list">
-                <li>Modélisation de base de données (MCD/MLD)</li>
-                <li>Requêtes SQL avancées</li>
-                <li>Analyse statistique & Graphiques</li>
-            </ul>
-            <a href="https://docs.google.com/document/d/1-fZTMWzL-40a1DoaLrz3_2ZKlRbhbRLu/edit" class="proof-link" target="_blank">Rapport d'Analyse (PDF)</a>
-        </div>
-
-        <div class="project">
-            <h3>Vidéo : Histoire de la 3D dans le Jeu Vidéo</h3>
-            <p><strong>Durée :</strong> 1 mois (2025)</p>
-            <p>Projet de vulgarisation scientifique. Recherche documentaire, écriture de script et montage vidéo pour expliquer les innovations techniques d'ID Software.</p>
-            <ul class="competences-list">
-                <li>Recherche documentaire technique</li>
-                <li>Montage vidéo (ClipChamp)</li>
-                <li>Vulgarisation scientifique</li>
-            </ul>
-            <a href="https://www.youtube.com/watch?v=qVRvwG0NJmM" class="proof-link" target="_blank">Voir la vidéo (YouTube)</a>
-        </div>
-    </section>
-
-    <section id="competences">
-        <h1>Compétences</h1>
-        <p>Vue d'ensemble de mes compétences techniques et transversales.</p>
-        
-        <div class="mindmap-container">
-            <div class="mindmap-placeholder">
-                <p>Insérer ici l'image de votre Mindmap des compétences<br>(Export PNG depuis XMind ou Canva)</p>
-            </div>
-        </div>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
-            <div style="flex: 1; min-width: 250px;">
-                <h3>Savoir-Faire</h3>
-                <ul class="competences-list">
-                    <li>Développement : Java, Python, HTML5, CSS3</li>
-                    <li>Base de données : SQL, Access, Merise</li>
-                    <li>Système : Linux (Debian), Bash</li>
-                    <li>Outils : Git, Visual Studio Code, IntelliJ</li>
-                </ul>
-            </div>
-            <div style="flex: 1; min-width: 250px;">
-                <h3>Savoir-Être</h3>
-                <ul class="competences-list">
-                    <li>Travail en équipe (Méthodes Agiles)</li>
-                    <li>Autonomie et rigueur</li>
-                    <li>Capacité d'analyse</li>
-                    <li>Curiosité technique</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h1>Contact</h1>
-        <p style="text-align: center;">N'hésitez pas à me contacter pour toute opportunité ou question.</p>
-        
-        <div class="contact-grid">
-            <div class="contact-item">
-                <h3>Email</h3>
-                <p><a href="mailto:martin.morenville.etu@univ-lille.fr">martin.morenville.etu@univ-lille.fr</a></p>
-            </div>
-            <div class="contact-item">
-                <h3>LinkedIn</h3>
-                <p><a href="#" target="_blank">Profil LinkedIn</a></p>
-            </div>
-            <div class="contact-item">
-                <h3>Téléphone</h3>
-                <p>06 12 34 56 78</p>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 2rem; background: #2c3e50; color: white; margin-top: 2rem;">
-        <p>&copy; 2026 Martin Morenvillé - Étudiant BUT Informatique</p>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
