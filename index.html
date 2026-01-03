@@ -49,7 +49,7 @@
             color: #3498db;
         }
 
-        /* Sections */
+        /* Sections avec target */
         section {
             display: none;
             min-height: calc(100vh - 80px);
@@ -58,15 +58,12 @@
             margin: 0 auto;
         }
 
-        section.active {
+        section:target {
             display: block;
         }
 
-        /* Masquer le contenu hero sur toutes les pages sauf accueil */
-        section:not(#accueil) .hero-content,
-        section:not(#accueil) .hero-subtitle,
-        section:not(#accueil) .intro-text {
-            display: none !important;
+        #accueil {
+            display: flex;
         }
 
         /* Titres hiérarchiques */
@@ -105,16 +102,11 @@
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23ecf0f1" width="1200" height="600"/><path fill="%233498db" opacity="0.1" d="M0,300 Q300,100 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
             background-size: cover;
             background-position: center;
-            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 4rem 2rem;
-        }
-
-        #accueil.active {
-            display: flex;
         }
 
         .hero-content {
@@ -199,14 +191,6 @@
 
         .project h3 {
             color: #3498db;
-        }
-
-        .project-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .competences-list {
@@ -364,17 +348,17 @@
     <!-- Navigation -->
     <nav>
         <ul>
-            <li><a href="#accueil" onclick="showSection('accueil')">Accueil</a></li>
-            <li><a href="#formations" onclick="showSection('formations')">Formations</a></li>
-            <li><a href="#experiences" onclick="showSection('experiences')">Expériences</a></li>
-            <li><a href="#realisations" onclick="showSection('realisations')">Réalisations</a></li>
-            <li><a href="#competences" onclick="showSection('competences')">Compétences</a></li>
-            <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#formations">Formations</a></li>
+            <li><a href="#experiences">Expériences</a></li>
+            <li><a href="#realisations">Réalisations</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <!-- Page Accueil -->
-    <section id="accueil" class="active">
+    <section id="accueil">
         <div class="hero-content">
             <h1>Martin Morenvillé</h1>
             <p class="hero-subtitle">Développeur Web Junior</p>
@@ -582,3 +566,194 @@
             <a href="https://drive.google.com/file/d/1z2ewCib1lK7M7trZiufJp9vx6ybCPQvo/view" class="proof-link" target="_blank">📋 Dossier complet du projet</a>
         </div>
     </section>
+
+    <!-- Page Compétences -->
+    <section id="competences">
+        <h1>Compétences</h1>
+        <p style="margin-bottom: 2rem;">Synthèse de mes compétences techniques et transversales acquises durant ma formation.</p>
+
+        <h2>Cartographie des Compétences Informatiques</h2>
+        <div class="mindmap-container">
+            <p><strong>Mindmap de mes compétences techniques</strong></p>
+            <div class="mindmap-placeholder">
+                <p>📊 Insérez ici votre Mindmap<br>(créée avec MindMeister, Coggle, XMind...)<br>Format recommandé : PNG ou SVG</p>
+            </div>
+        </div>
+
+        <h2>Compétences Techniques (Savoir-faire)</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Langages de Programmation</h3>
+                <ul>
+                    <li>Java (Avancé - POO, JavaFX)</li>
+                    <li>Python (Intermédiaire)</li>
+                    <li>SQL (MySQL, Access)</li>
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript (Bases)</li>
+                    <li>PHP (Bases)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Développement d'Applications</h3>
+                <ul>
+                    <li>Programmation Orientée Objet</li>
+                    <li>Architecture MVC</li>
+                    <li>Interfaces graphiques (JavaFX)</li>
+                    <li>Algorithmes et structures de données</li>
+                    <li>Graphes et optimisation</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Bases de Données</h3>
+                <ul>
+                    <li>Modélisation (Merise, MCD/MLD)</li>
+                    <li>SQL (requêtes complexes)</li>
+                    <li>Microsoft Access</li>
+                    <li>Analyse statistique de données</li>
+                    <li>Import/Export CSV</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Développement Web</h3>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>Design responsive</li>
+                    <li>Maquettes graphiques</li>
+                    <li>UX/UI Design</li>
+                    <li>PHP (bases)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Administration Système</h3>
+                <ul>
+                    <li>Linux/Debian</li>
+                    <li>VirtualBox (virtualisation)</li>
+                    <li>Configuration SSH</li>
+                    <li>Gestion utilisateurs et permissions</li>
+                    <li>Gestionnaire de paquets (apt)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Outils et Méthodologies</h3>
+                <ul>
+                    <li>Git / GitLab</li>
+                    <li>Méthode Agile (Scrum)</li>
+                    <li>Diagramme de Gantt</li>
+                    <li>Tests et débogage</li>
+                    <li>Documentation technique</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Multimédia</h3>
+                <ul>
+                    <li>Montage vidéo (Clip Champ)</li>
+                    <li>Traitement audio (Audacity)</li>
+                    <li>Création de supports visuels</li>
+                    <li>Communication visuelle</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Gestion de Projet</h3>
+                <ul>
+                    <li>Planification de projet</li>
+                    <li>Analyse de besoins</li>
+                    <li>Analyse de marché (SWOT)</li>
+                    <li>Suivi de jalons</li>
+                    <li>Création de livrables</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Compétences Transversales (Savoir-être)</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Travail d'Équipe</h3>
+                <ul>
+                    <li>Communication efficace</li>
+                    <li>Collaboration et entraide</li>
+                    <li>Répartition des tâches</li>
+                    <li>Travail en trinôme/groupe</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Organisation</h3>
+                <ul>
+                    <li>Gestion du temps</li>
+                    <li>Respect des délais</li>
+                    <li>Planification de tâches</li>
+                    <li>Rigueur et précision</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Autonomie</h3>
+                <ul>
+                    <li>Recherche de solutions</li>
+                    <li>Prise d'initiative</li>
+                    <li>Apprentissage autonome</li>
+                    <li>Résolution de problèmes</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Communication</h3>
+                <ul>
+                    <li>Rédaction de rapports</li>
+                    <li>Documentation technique</li>
+                    <li>Vulgarisation scientifique</li>
+                    <li>Présentation de projets</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Contact -->
+    <section id="contact">
+        <h1>Contact</h1>
+        <p style="margin-bottom: 2rem;">Pour toute opportunité professionnelle ou collaboration, n'hésitez pas à me contacter.</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <div>
+                    <strong>Email universitaire :</strong><br>
+                    <a href="mailto:martin.morenville.etu@univ-lille.fr">martin.morenville.etu@univ-lille.fr</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">💼</span>
+                <div>
+                    <strong>LinkedIn :</strong><br>
+                    <a href="https://www.linkedin.com/in/martin-morenville" target="_blank">linkedin.com/in/martin-morenville</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <div>
+                    <strong>Téléphone :</strong><br>
+                    <a href="tel:+33600000000">06 00 00 00 00</a>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">💻</span>
+                <div>
+                    <strong>GitLab IUT :</strong><br>
+                    <a href="https://gitlab.univ-lille.fr/martin.morenville" target="_blank">gitlab.univ-lille.fr/martin.morenville</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
