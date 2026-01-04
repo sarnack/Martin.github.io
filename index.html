@@ -203,7 +203,7 @@
         .competences-list {
             list-style: none;
             padding: 0;
-            margin-bottom: auto;
+            margin-bottom: 1rem;
         }
 
         .competences-list li {
@@ -221,7 +221,7 @@
         }
 
         .btn-group {
-            margin-top: 1.5rem;
+            margin-top: auto;
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
@@ -237,11 +237,36 @@
             font-size: 0.9rem;
             transition: all 0.3s;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .btn-accent:hover {
             background: var(--accent-glow);
             box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-text {
+            background: none;
+            border: none;
+            color: var(--accent);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        /* Styles pour le contenu caché */
+        .hidden-content {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hidden-content p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
         }
 
         /* --- ACCUEIL SPÉCIFIQUE --- */
@@ -372,10 +397,14 @@
                     <p><strong>Lycée - Classe de Première</strong></p>
                     <p>Projet interdisciplinaire en sciences de l'environnement.</p>
                     <ul class="competences-list">
-                        <li>Recherche de financements et de partenariats.</li>
-                        <li>Gestion de projet et communication.</li>
                         <li>Obtention du niveau 1 de plongée subaquatique (Presqu'île de Giens).</li>
                     </ul>
+                    
+                    <div id="exp-1" class="hidden-content">
+                        <p>Implication active dans la gestion de projet et la recherche de financements et partenariats.</p>
+                        <p>Développement de compétences en communication pour promouvoir le projet interdisciplinaire.</p>
+                    </div>
+                    <button onclick="toggleDetails('exp-1', this)" class="btn-text">Voir plus</button>
                 </div>
 
                 <div class="glass-card">
@@ -402,12 +431,24 @@
                 <div class="glass-card">
                     <h3>SAE 3.02 : Jeu de Labyrinthe</h3>
                     <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Algo</p>
-                    <p>Développement d'un jeu de labyrinthe complet avec modes "Libre" et "Progression". Génération procédurale de niveaux (aléatoires et parfaits) et gestion de vues (locale/globale).</p>
+                    <p>Conception d'un jeu complet de labyrinthe. Le joueur doit trouver la sortie dans des environnements générés procéduralement.</p>
                     <ul class="competences-list">
-                        <li>Algorithmes de génération et de résolution</li>
-                        <li>Architecture MVC & JavaFX</li>
-                        <li>Travail en équipe (Git/GitLab)</li>
+                        <li>Architecture MVC</li>
+                        <li>Algorithmes de génération</li>
                     </ul>
+                    
+                    <div id="projet-1" class="hidden-content">
+                        <p><strong>Fonctionnalités avancées :</strong></p>
+                        <ul class="competences-list">
+                            <li><strong>Génération procédurale :</strong> Création de labyrinthes "parfaits" (chemin unique) et aléatoires (murs à X%) garantissant toujours une solution.</li>
+                            <li><strong>Algorithmes de Graphes :</strong> Utilisation de parcours (DFS/BFS) pour vérifier la connexité et calculer la distance minimale entrée-sortie.</li>
+                            <li><strong>Modes de Jeu :</strong> Mode "Libre" paramétrable et Mode "Progression" avec déverrouillage de niveaux (Facile/Moyen/Difficile).</li>
+                            <li><strong>Vues Multiples :</strong> Implémentation de 3 vues distinctes : Vue globale omnisciente, Vue locale (brouillard de guerre) et Carte.</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="toggleDetails('projet-1', this)" class="btn-text">Voir plus</button>
+                    
                     <div class="btn-group">
                         <a href="#" class="btn-accent">Voir le sujet (PDF)</a>
                     </div>
@@ -416,23 +457,45 @@
                 <div class="glass-card">
                     <h3>Projet Agile</h3>
                     <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Scrum</p>
-                    <p>Création d'un jeu en Java lors d'une semaine intensive.</p>
+                    <p>Semaine intensive de développement d'un jeu vidéo en équipe complète.</p>
                     <ul class="competences-list">
-                        <li>Développement collaboratif</li>
-                        <li>Méthodologie Agile / Scrum</li>
-                        <li>Livraison rapide de fonctionnalités</li>
+                        <li>Méthode Agile/Scrum</li>
+                        <li>Travail d'équipe</li>
                     </ul>
+
+                    <div id="projet-2" class="hidden-content">
+                        <p><strong>Détails de la mission :</strong></p>
+                        <ul class="competences-list">
+                            <li>Développement itératif sur une semaine (5 jours) avec des livrables quotidiens.</li>
+                            <li>Application des rituels Scrum : Daily meetings, Backlog refinement et Rétrospectives.</li>
+                            <li>Adaptation rapide aux changements de spécifications ("Customer changes") en cours de route.</li>
+                            <li>Conception orientée objet robuste pour faciliter l'ajout de nouvelles fonctionnalités.</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="toggleDetails('projet-2', this)" class="btn-text">Voir plus</button>
                 </div>
 
                 <div class="glass-card">
                     <h3>Affectation Séjours</h3>
                     <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java & Graphes</p>
-                    <p>Application d'optimisation pour créer des binômes de correspondants selon affinités et contraintes.</p>
+                    <p>Application d'optimisation pour créer des binômes de correspondants selon affinités.</p>
                     <ul class="competences-list">
                         <li>Graphes pondérés</li>
                         <li>Interface JavaFX</li>
-                        <li>Tests unitaires</li>
                     </ul>
+
+                    <div id="projet-3" class="hidden-content">
+                        <p><strong>Challenge technique :</strong></p>
+                        <ul class="competences-list">
+                            <li>Modélisation du problème sous forme de graphe biparti pondéré.</li>
+                            <li>Maximisation du "score de compatibilité" tout en respectant des contraintes rédhibitoires (allergies, etc.).</li>
+                            <li>Interface utilisateur ergonomique permettant l'ajustement manuel des résultats par les professeurs.</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="toggleDetails('projet-3', this)" class="btn-text">Voir plus</button>
+
                     <div class="btn-group">
                         <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-accent" target="_blank">GitLab</a>
                     </div>
@@ -518,5 +581,17 @@
         </div>
     </section>
 
+    <script>
+        function toggleDetails(id, btn) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                btn.innerText = "Voir plus";
+            } else {
+                content.style.display = "block";
+                btn.innerText = "Voir moins";
+            }
+        }
+    </script>
 </body>
 </html>
