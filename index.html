@@ -296,15 +296,23 @@
         /* --- MINDMAP --- */
         .mindmap-area {
             width: 100%;
-            height: 400px;
+            /* Hauteur automatique pour s'adapter à l'image */
+            min-height: 400px; 
             background: rgba(255,255,255,0.03);
             border: 2px dashed rgba(255,255,255,0.1);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
             margin-bottom: 3rem;
+            overflow: hidden; /* Pour couper si l'image dépasse les bords arrondis */
+        }
+        
+        .mindmap-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 600px; /* Limite la hauteur pour ne pas casser la mise en page */
+            object-fit: contain;
         }
 
         /* --- RESPONSIVE --- */
@@ -338,7 +346,7 @@
                 <h2 style="font-size: 2rem; border: none; margin: 0; color: var(--text-muted); display: block;">
                     Étudiant en BUT Informatique.
                 </h2>
-                </div>
+            </div>
             
             <div class="hero-visual">
                 <img src="Portrait.jpg" alt="Martin Morenvillé" class="profile-img">
@@ -440,10 +448,10 @@
                     <div id="projet-1" class="hidden-content">
                         <p><strong>Fonctionnalités avancées :</strong></p>
                         <ul class="competences-list">
-                            <li><strong>Génération procédurale :</strong> Création de labyrinthes "parfaits" (chemin unique) et aléatoires (murs à X%) garantissant toujours une solution.</li>
-                            <li><strong>Algorithmes de Graphes :</strong> Utilisation de parcours (DFS/BFS) pour vérifier la connexité et calculer la distance minimale entrée-sortie.</li>
-                            <li><strong>Modes de Jeu :</strong> Mode "Libre" paramétrable et Mode "Progression" avec déverrouillage de niveaux (Facile/Moyen/Difficile).</li>
-                            <li><strong>Vues Multiples :</strong> Implémentation de 3 vues distinctes : Vue globale omnisciente, Vue locale (brouillard de guerre) et Carte.</li>
+                            [cite_start]<li><strong>Génération procédurale :</strong> Création de labyrinthes "parfaits" (chemin unique) et aléatoires (murs à X%) garantissant toujours une solution[cite: 26, 28, 44].</li>
+                            [cite_start]<li><strong>Algorithmes de Graphes :</strong> Utilisation de parcours pour vérifier la connexité et calculer la distance minimale entrée-sortie[cite: 26].</li>
+                            [cite_start]<li><strong>Modes de Jeu :</strong> Mode "Libre" paramétrable et Mode "Progression" avec déverrouillage de niveaux (Facile/Moyen/Difficile)[cite: 30, 32].</li>
+                            [cite_start]<li><strong>Vues Multiples :</strong> Implémentation de 3 vues distinctes : Vue globale omnisciente, Vue locale (brouillard de guerre) et Carte[cite: 39, 53].</li>
                         </ul>
                     </div>
                     
@@ -466,10 +474,9 @@
                     <div id="projet-2" class="hidden-content">
                         <p><strong>Détails de la mission :</strong></p>
                         <ul class="competences-list">
-                            <li>Développement itératif sur une semaine (5 jours) avec des livrables quotidiens.</li>
-                            <li>Application des rituels Scrum : Daily meetings, Backlog refinement et Rétrospectives.</li>
-                            <li>Adaptation rapide aux changements de spécifications ("Customer changes") en cours de route.</li>
-                            <li>Conception orientée objet robuste pour faciliter l'ajout de nouvelles fonctionnalités.</li>
+                            [cite_start]<li>Développement itératif sur une semaine (5 jours) avec des livrables quotidiens[cite: 276, 277].</li>
+                            <li>Application des rituels Scrum et adaptation aux changements de spécifications.</li>
+                            [cite_start]<li>Conception orientée objet robuste pour faciliter l'ajout de nouvelles fonctionnalités[cite: 265].</li>
                         </ul>
                     </div>
 
@@ -510,10 +517,7 @@
             <h2>04. Compétences</h2>
             
             <div class="mindmap-area">
-                <div style="text-align: center;">
-                    <p style="margin-bottom: 1rem;">[ Insérer votre Mindmap ici ]</p>
-                    <small>Image PNG exportée</small>
-                </div>
+                <img src="Mindmap.png" alt="Carte mentale des compétences" class="mindmap-img">
             </div>
 
             <div class="grid-3">
@@ -555,7 +559,7 @@
             <p style="color: var(--accent); font-family: monospace;">05. Me joindre</p>
             <h2 style="font-size: 3rem; display: block; margin-bottom: 2rem;">Contact</h2>
             <p>
-                Je suis joignable pour toute opportunité de stage ou collaboration.
+                Je suis joignable pour toute opportunité de stage.
             </p>
             
             <div class="glass-card" style="text-align: left; max-width: 500px; margin: 2rem auto;">
@@ -567,10 +571,6 @@
                     <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
                         <span style="color: var(--accent); font-size: 1.5rem;">📞</span>
                         <span style="font-size: 1.1rem;">07 67 30 42 85</span>
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 1rem;">
-                        <span style="color: var(--accent); font-size: 1.5rem;">📍</span>
-                        <span style="font-size: 1.1rem;">35, Allée des Capucines<br>Villeneuve d'Ascq</span>
                     </li>
                 </ul>
             </div>
