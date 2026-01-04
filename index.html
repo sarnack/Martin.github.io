@@ -9,10 +9,10 @@
         /* --- VARIABLES & RESET --- */
         :root {
             --bg-dark: #0f1115;
-            --bg-panel: rgba(30, 32, 40, 0.6);
+            --bg-card: #1e2028; /* Fond opaque comme sur votre capture */
             --text-main: #e0e0e0;
             --text-muted: #a0a0a0;
-            --accent: #64ffda;
+            --accent: #64ffda; /* Vert/Cyan de votre capture */
             --accent-glow: rgba(100, 255, 218, 0.1);
             --gradient-bg: radial-gradient(circle at 50% 0%, rgb(18, 28, 45) 0%, rgb(15, 17, 21) 80%);
         }
@@ -90,27 +90,27 @@
 
         h3 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 0.5rem; }
         
-        /* Texte aligné à gauche pour éviter les trous */
+        /* CORRECTION : Texte aligné à gauche */
         p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; text-align: left; }
 
-        /* --- CARTES --- */
+        /* --- CARTES STYLE SOMBRE (Comme sur la capture) --- */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; width: 100%; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; width: 100%; }
 
-        .glass-card {
-            background: var(--bg-panel);
+        .dark-card {
+            background: var(--bg-card); /* Fond sombre opaque */
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            border-radius: 12px;
             padding: 2.5rem;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             display: flex; flex-direction: column;
             height: 100%;
         }
 
-        .glass-card:hover {
+        .dark-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            border-color: var(--accent-glow);
+            border-color: var(--accent);
         }
 
         .card-header {
@@ -124,24 +124,37 @@
             white-space: nowrap; margin-left: 1rem;
         }
 
-        /* Tags de compétences */
+        /* Tags de compétences (Style capture) */
         .tech-tags {
-            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
         }
         .tag {
-            font-size: 0.8rem; color: var(--accent); border: 1px solid rgba(100, 255, 218, 0.3);
-            padding: 0.2rem 0.6rem; border-radius: 20px;
+            font-size: 0.8rem; 
+            color: var(--accent); 
+            background: rgba(100, 255, 218, 0.05);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            padding: 0.3rem 0.8rem; border-radius: 4px;
+            font-family: monospace;
         }
 
-        /* Lien Bleu (Utilisé uniquement dans Réalisations) */
-        .btn-link {
+        /* BOUTON DOCUMENT PREUVE (Bleu demandé) */
+        .proof-btn {
             margin-top: auto;
-            color: #4dabf7; /* Bleu clair */
-            text-decoration: none; font-weight: 600;
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            transition: color 0.3s;
+            display: inline-block;
+            padding: 0.7rem 1.2rem;
+            border: 1px solid #4dabf7; /* Bleu */
+            color: #4dabf7;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            width: fit-content;
         }
-        .btn-link:hover { color: #74c0fc; text-decoration: underline; }
+
+        .proof-btn:hover {
+            background: rgba(77, 171, 247, 0.1);
+            color: #74c0fc;
+        }
 
         /* --- ACCUEIL --- */
         .hero-layout {
@@ -165,6 +178,12 @@
             margin-bottom: 3rem; overflow: hidden;
         }
         .mindmap-img { max-width: 100%; height: auto; max-height: 600px; object-fit: contain; }
+
+        /* --- ICONS --- */
+        .card-icon {
+            font-size: 1.5rem; color: var(--accent); opacity: 0.8;
+            background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
+        }
 
         @media (max-width: 1024px) {
             .hero-layout { flex-direction: column-reverse; text-align: center; gap: 2rem; }
@@ -197,7 +216,7 @@
                 </h2>
                 <br>
                 <p>
-                    Passionné par le développement d'applications et l'architecture logicielle, je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille. J'ai acquis des compétences solides en Java, Web et gestion de projet Agile. Rigoureux et curieux, je cherche à concevoir des solutions performantes et ergonomiques. Je suis à la recherche d'un stage pour mettre mon savoir-faire au service de projets concrets.
+                    [cite_start]Passionné par le développement d'applications et l'architecture logicielle, je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille[cite: 19, 23, 107]. [cite_start]J'ai acquis des compétences solides en Java, Web et gestion de projet Agile[cite: 201, 241]. [cite_start]Rigoureux et curieux, je cherche à concevoir des solutions performantes et ergonomiques[cite: 178]. [cite_start]Je suis à la recherche d'un stage pour mettre mon savoir-faire au service de projets concrets[cite: 284].
                 </p>
             </div>
             
@@ -211,21 +230,21 @@
         <div class="container">
             <h2>01. Formations</h2>
             <div class="grid-2">
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>BUT Informatique</h3>
-                        <span class="dates">2024 - 2027</span>
+                        <span class="dates">En cours</span>
                     </div>
                     <div class="tech-tags">
                         <span class="tag">IUT Lille</span>
                         <span class="tag">Bac+3</span>
                     </div>
                     <p>
-                        Parcours "Réalisation d'applications". Formation approfondie en développement logiciel (Java, Python), web (HTML/CSS), bases de données (SQL) et gestion de projet. Acquisition de méthodes de travail professionnelles (Agile/Scrum).
+                        Parcours "Réalisation d'applications : conception, développement, validation". [cite_start]Formation approfondie en développement logiciel (Java), web (HTML/CSS), bases de données (SQL) et gestion de projet Agile[cite: 195, 231, 232, 233, 238].
                     </p>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Baccalauréat Général</h3>
                         <span class="dates">2024</span>
@@ -235,7 +254,7 @@
                         <span class="tag">Mention Bien</span>
                     </div>
                     <p>
-                        Spécialités Numérique et Sciences Informatiques (NSI) et Anglais Monde Contemporain. Option Mathématiques complémentaires. Développement de la logique algorithmique.
+                        Spécialités Numérique et Sciences Informatiques (NSI) et Anglais Monde Contemporain. Option Mathématiques complémentaires. [cite_start]Développement de la logique algorithmique et des bases informatiques[cite: 254, 258, 259, 260].
                     </p>
                 </div>
             </div>
@@ -246,21 +265,21 @@
         <div class="container">
             <h2>02. Expériences</h2>
             <div class="grid-2">
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Projet Plongée</h3>
                         <span class="dates">2023</span>
                     </div>
                     <div class="tech-tags">
-                        <span class="tag">Gestion de projet</span>
-                        <span class="tag">Communication</span>
+                        <span class="tag">Gestion projet</span>
+                        <span class="tag">Partenariats</span>
                     </div>
                     <p>
-                        Participation active à un projet interdisciplinaire. Implication dans la recherche de financements et gestion des partenariats. Développement de compétences en communication et obtention du niveau 1 de plongée.
+                        Participation à un projet interdisciplinaire au lycée. Implication dans la recherche de financements et gestion des partenariats. [cite_start]Développement de compétences en communication et obtention du niveau 1 de plongée[cite: 278, 280, 281].
                     </p>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Certification PSC1</h3>
                         <span class="dates">2023</span>
@@ -270,7 +289,7 @@
                         <span class="tag">Sécurité</span>
                     </div>
                     <p>
-                        Formation "Prévention et Secours Civiques de niveau 1". Apprentissage des gestes de premiers secours, gestion du stress en situation d'urgence et réactivité face aux accidents.
+                        Formation "Prévention et Secours Civiques de niveau 1". [cite_start]Apprentissage des gestes de premiers secours, gestion du stress en situation d'urgence et réactivité face aux accidents[cite: 261].
                     </p>
                 </div>
             </div>
@@ -282,26 +301,26 @@
             <h2>03. Réalisations</h2>
             <div class="grid-3">
                 
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Jeu de Labyrinthe</h3>
-                        <i class="fas fa-gamepad" style="color:var(--accent); font-size:1.5rem;"></i>
+                        <i class="fas fa-gamepad card-icon"></i>
                     </div>
                     <div class="tech-tags">
                         <span class="tag">Java</span>
+                        <span class="tag">Algorithmes</span>
                         <span class="tag">MVC</span>
-                        <span class="tag">Algo</span>
                     </div>
                     <p>
-                        Développement d'un jeu complet avec génération procédurale de niveaux (aléatoires et parfaits) et résolution par graphes. Implémentation d'une architecture MVC, de modes de jeu (Libre/Progression) et de différentes vues (Globale/Locale).
+                        Développement d'un jeu complet avec génération procédurale de niveaux (aléatoires et parfaits) et résolution par graphes. [cite_start]Implémentation d'une architecture MVC, de modes de jeu (Libre/Progression) et de différentes vues (Globale/Locale)[cite: 5, 20, 43, 53].
                     </p>
-                    <a href="#" class="btn-link"><i class="fas fa-file-pdf"></i> Sujet du projet (PDF)</a>
+                    <a href="#" class="proof-btn">Sujet du projet (PDF)</a>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Projet Agile</h3>
-                        <i class="fas fa-users" style="color:var(--accent); font-size:1.5rem;"></i>
+                        <i class="fas fa-users card-icon"></i>
                     </div>
                     <div class="tech-tags">
                         <span class="tag">Scrum</span>
@@ -309,15 +328,15 @@
                         <span class="tag">Sprint</span>
                     </div>
                     <p>
-                        Création d'un jeu vidéo en Java lors d'une semaine intensive en équipe. Application concrète de la méthode Agile/Scrum : réunions quotidiennes, gestion du backlog et adaptation rapide aux changements de spécifications.
+                        Création d'un jeu vidéo en Java lors d'une semaine intensive en équipe. [cite_start]Application concrète de la méthode Agile/Scrum : réunions quotidiennes, gestion du backlog et adaptation rapide aux changements de spécifications[cite: 274, 276].
                     </p>
-                    <a href="Martin MORENVILLE (2).pdf" class="btn-link" target="_blank"><i class="fas fa-file-alt"></i> Voir sur le CV</a>
+                    <a href="Martin MORENVILLE (2).pdf" class="proof-btn" target="_blank">Voir sur le CV</a>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <div class="card-header">
                         <h3>Affectation Séjours</h3>
-                        <i class="fas fa-network-wired" style="color:var(--accent); font-size:1.5rem;"></i>
+                        <i class="fas fa-project-diagram card-icon"></i>
                     </div>
                     <div class="tech-tags">
                         <span class="tag">Graphes</span>
@@ -325,9 +344,9 @@
                         <span class="tag">Optimisation</span>
                     </div>
                     <p>
-                        Développement d'une application d'aide à la décision pour jumeler des correspondants. Utilisation de graphes bipartis pondérés pour maximiser les affinités tout en respectant des contraintes strictes (allergies, âge).
+                        Développement d'une application d'aide à la décision pour jumeler des correspondants. [cite_start]Utilisation de graphes bipartis pondérés pour maximiser les affinités tout en respectant des contraintes strictes (allergies, âge)[cite: 297].
                     </p>
-                    <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-link" target="_blank"><i class="fab fa-gitlab"></i> Code source GitLab</a>
+                    <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="proof-btn" target="_blank">Code source GitLab</a>
                 </div>
 
             </div>
@@ -343,32 +362,32 @@
             </div>
 
             <div class="grid-3">
-                <div class="glass-card">
+                <div class="dark-card">
                     <h3 style="color: var(--accent);">Techniques</h3>
                     <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        <li>▹ Java (POO), Python</li>
-                        <li>▹ Web : HTML5, CSS3</li>
-                        <li>▹ Base de données : SQL</li>
-                        <li>▹ Outils : Git, Linux</li>
+                        [cite_start]<li>▹ Java (POO), Python [cite: 265]</li>
+                        [cite_start]<li>▹ Web : HTML5, CSS3 [cite: 266]</li>
+                        [cite_start]<li>▹ Base de données : SQL [cite: 238]</li>
+                        [cite_start]<li>▹ Outils : Git, Linux [cite: 267, 268]</li>
                     </ul>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <h3 style="color: var(--accent);">Langues</h3>
                     <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        <li>▹ Anglais : Niveau B2 (Certifié)</li>
-                        <li>▹ Allemand : Niveau A2</li>
+                        [cite_start]<li>▹ Anglais : Niveau B2 (Certifié) [cite: 261, 288]</li>
+                        [cite_start]<li>▹ Allemand : Niveau A2 [cite: 289]</li>
                         <li>▹ Français : Langue maternelle</li>
                     </ul>
                 </div>
 
-                <div class="glass-card">
+                <div class="dark-card">
                     <h3 style="color: var(--accent);">Savoir-Être</h3>
                     <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        <li>▹ Travail en équipe</li>
-                        <li>▹ Autonomie & Rigueur</li>
-                        <li>▹ Gestion de projet</li>
-                        <li>▹ Communication</li>
+                        [cite_start]<li>▹ Travail en équipe [cite: 271]</li>
+                        [cite_start]<li>▹ Autonomie & Rigueur [cite: 301]</li>
+                        [cite_start]<li>▹ Gestion de projet [cite: 269]</li>
+                        [cite_start]<li>▹ Communication [cite: 272]</li>
                     </ul>
                 </div>
             </div>
@@ -380,7 +399,7 @@
             <p style="color: var(--accent); font-family: monospace;">05. Me joindre</p>
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem; display: block;">Contact</h2>
             
-            <div class="glass-card" style="text-align: left;">
+            <div class="dark-card" style="text-align: left;">
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin-bottom: 1rem;">
                         <span style="color: var(--accent); margin-right: 10px;">✉</span>
@@ -392,7 +411,7 @@
                     </li>
                     <li>
                         <span style="color: var(--accent); margin-right: 10px;">📍</span>
-                        Villeneuve d'Ascq
+                        [cite_start]Villeneuve d'Ascq [cite: 257]
                     </li>
                 </ul>
             </div>
