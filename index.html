@@ -8,17 +8,25 @@
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
+            /* Palette Sombre Nuancée */
             --bg-dark: #0f1115;
-            --bg-card: #1e2028; /* Fond opaque comme sur votre capture */
+            --bg-panel: rgba(30, 32, 40, 0.6); /* Effet verre */
             --text-main: #e0e0e0;
             --text-muted: #a0a0a0;
-            --accent: #64ffda; /* Vert/Cyan de votre capture */
+            --accent: #64ffda; /* Cyan doux */
             --accent-glow: rgba(100, 255, 218, 0.1);
             --gradient-bg: radial-gradient(circle at 50% 0%, rgb(18, 28, 45) 0%, rgb(15, 17, 21) 80%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
@@ -30,166 +38,267 @@
             overflow-x: hidden;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION STICKY --- */
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            background: rgba(15, 17, 21, 0.95);
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 17, 21, 0.9);
             backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
             z-index: 1000;
             border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex; justify-content: center;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul {
-            display: flex; gap: 2.5rem; list-style: none;
-            padding: 0; margin: 0;
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         nav a {
-            color: var(--text-muted); text-decoration: none;
-            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
-            transition: color 0.3s;
-            position: relative; padding-bottom: 5px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
         }
 
-        nav a:hover { color: var(--accent); }
-        nav a:hover::after { width: 100%; }
+        nav a:hover {
+            color: var(--accent);
+        }
+
         nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-            background: var(--accent); transition: width 0.3s;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
         }
 
-        /* --- SECTIONS --- */
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- SECTIONS PLEIN ÉCRAN --- */
         section {
             min-height: 100vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 6rem 5% 4rem 5%;
+            position: relative;
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
-        .container { width: 100%; max-width: 1200px; margin: 0 auto; }
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
+        /* --- TYPOGRAPHIE --- */
         h1 {
-            font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
             background: linear-gradient(90deg, #fff, #a5a5a5);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
 
         h2 {
-            font-size: 2.5rem; color: var(--accent); margin-bottom: 3rem;
-            position: relative; display: inline-block;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
         }
         
         h2::after {
-            content: ''; display: block; width: 60px; height: 3px;
-            background: var(--accent); margin-top: 10px;
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin-top: 10px;
+            border-radius: 2px;
         }
 
-        h3 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 0.5rem; }
-        
-        /* CORRECTION : Texte aligné à gauche */
-        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; text-align: left; }
+        h3 {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
 
-        /* --- CARTES STYLE SOMBRE (Comme sur la capture) --- */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; width: 100%; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; width: 100%; }
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            max-width: 800px;
+        }
 
-        .dark-card {
-            background: var(--bg-card); /* Fond sombre opaque */
+        /* --- CARTES GLASSMORPHISM --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .glass-card {
+            background: var(--bg-panel);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 2.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex; flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .dark-card:hover {
+        .glass-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            border-color: var(--accent);
+            border-color: var(--accent-glow);
         }
 
         .card-header {
-            display: flex; justify-content: space-between; align-items: flex-start;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .dates {
-            font-family: monospace; color: var(--accent); background: var(--accent-glow);
-            padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem;
-            white-space: nowrap; margin-left: 1rem;
-        }
-
-        /* Tags de compétences (Style capture) */
-        .tech-tags {
-            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
-        }
-        .tag {
-            font-size: 0.8rem; 
-            color: var(--accent); 
-            background: rgba(100, 255, 218, 0.05);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            padding: 0.3rem 0.8rem; border-radius: 4px;
             font-family: monospace;
+            color: var(--accent);
+            background: var(--accent-glow);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
         }
 
-        /* BOUTON DOCUMENT PREUVE (Bleu demandé) */
-        .proof-btn {
+        .competences-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .competences-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .competences-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .btn-group {
             margin-top: auto;
-            display: inline-block;
-            padding: 0.7rem 1.2rem;
-            border: 1px solid #4dabf7; /* Bleu */
-            color: #4dabf7;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-accent {
+            padding: 0.7rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
             text-decoration: none;
             border-radius: 4px;
             font-size: 0.9rem;
             transition: all 0.3s;
-            width: fit-content;
+            font-weight: 500;
+            cursor: pointer;
         }
 
-        .proof-btn:hover {
-            background: rgba(77, 171, 247, 0.1);
-            color: #74c0fc;
+        .btn-accent:hover {
+            background: var(--accent-glow);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* --- ACCUEIL --- */
+        /* --- ACCUEIL SPÉCIFIQUE --- */
         .hero-layout {
-            display: flex; align-items: center; justify-content: center; gap: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5rem;
             max-width: 1200px;
+            margin: 0 auto;
         }
+
         .profile-img {
-            width: 350px; height: 350px; object-fit: cover;
-            border-radius: 20px; filter: grayscale(20%);
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+            filter: grayscale(20%);
             box-shadow: 20px 20px 0px rgba(100, 255, 218, 0.05);
             transition: filter 0.3s;
         }
-        .profile-img:hover { filter: grayscale(0%); }
+
+        .profile-img:hover {
+            filter: grayscale(0%);
+        }
 
         /* --- MINDMAP --- */
         .mindmap-area {
-            width: 100%; min-height: 400px; 
+            width: 100%;
+            min-height: 400px; 
             background: rgba(255,255,255,0.03);
-            border: 2px dashed rgba(255,255,255,0.1); border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 3rem; overflow: hidden;
+            border: 2px dashed rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+            overflow: hidden;
         }
-        .mindmap-img { max-width: 100%; height: auto; max-height: 600px; object-fit: contain; }
-
-        /* --- ICONS --- */
-        .card-icon {
-            font-size: 1.5rem; color: var(--accent); opacity: 0.8;
-            background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;
+        
+        .mindmap-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
         }
 
+        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
             .hero-layout { flex-direction: column-reverse; text-align: center; gap: 2rem; }
             h1 { font-size: 2.5rem; }
             .profile-img { width: 250px; height: 250px; }
-            nav ul { gap: 1rem; font-size: 0.8rem; }
+            section { padding: 6rem 1.5rem; height: auto; min-height: 100vh; }
         }
     </style>
 </head>
@@ -200,7 +309,7 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#formations">Formations</a></li>
             <li><a href="#experiences">Expériences</a></li>
-            <li><a href="#realisations">Réalisations</a></li>
+            <li><a href="#realisations">Projets</a></li>
             <li><a href="#competences">Compétences</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -209,14 +318,13 @@
     <section id="accueil">
         <div class="hero-layout">
             <div class="hero-text">
-                <p style="color: var(--accent); font-family: monospace; margin-bottom: 1rem;">Bonjour, je suis</p>
                 <h1>Martin Morenvillé.</h1>
                 <h2 style="font-size: 2rem; border: none; margin: 0; color: var(--text-muted); display: block;">
                     Étudiant en BUT Informatique.
                 </h2>
                 <br>
                 <p>
-                    [cite_start]Passionné par le développement d'applications et l'architecture logicielle, je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille[cite: 19, 23, 107]. [cite_start]J'ai acquis des compétences solides en Java, Web et gestion de projet Agile[cite: 201, 241]. [cite_start]Rigoureux et curieux, je cherche à concevoir des solutions performantes et ergonomiques[cite: 178]. [cite_start]Je suis à la recherche d'un stage pour mettre mon savoir-faire au service de projets concrets[cite: 284].
+                    Actuellement étudiant en deuxième année de BUT Informatique à l'IUT de Lille, je recherche un stage de 10 semaines du 7 avril au 12 juin 2025 pour consolider mes compétences en développement Java. Passionné par la programmation orientée objet et le travail collaboratif, j'ai réalisé plusieurs projets techniques comme une application de gestion de séjours linguistiques et un jeu de labyrinthe avec génération procédurale. Ces expériences m'ont permis de développer ma rigueur, mon autonomie et ma capacité à travailler efficacement en équipe. Mon objectif est d'intégrer une entreprise où je pourrai contribuer à des projets concrets tout en approfondissant mes connaissances techniques.
                 </p>
             </div>
             
@@ -230,32 +338,26 @@
         <div class="container">
             <h2>01. Formations</h2>
             <div class="grid-2">
-                <div class="dark-card">
+                <div class="glass-card">
                     <div class="card-header">
-                        <h3>BUT Informatique</h3>
+                        <div>
+                            <h3>BUT Informatique</h3>
+                            <p style="color: var(--accent);">IUT de Lille</p>
+                        </div>
                         <span class="dates">En cours</span>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">IUT Lille</span>
-                        <span class="tag">Bac+3</span>
-                    </div>
-                    <p>
-                        Parcours "Réalisation d'applications : conception, développement, validation". [cite_start]Formation approfondie en développement logiciel (Java), web (HTML/CSS), bases de données (SQL) et gestion de projet Agile[cite: 195, 231, 232, 233, 238].
-                    </p>
+                    <p>Formation complète en informatique axée sur le développement logiciel et la gestion de projets. Apprentissage de la programmation orientée objet en Java, du développement web avec HTML et CSS, ainsi que de l'utilisation des outils de versionnement Git. Maîtrise des environnements Linux et Windows pour le déploiement d'applications. Développement de compétences en gestion de projet agile et en travail collaboratif à travers de nombreux projets en équipe.</p>
                 </div>
 
-                <div class="dark-card">
+                <div class="glass-card">
                     <div class="card-header">
-                        <h3>Baccalauréat Général</h3>
+                        <div>
+                            <h3>Baccalauréat Général</h3>
+                            <p style="color: var(--accent);">Lycée Raymond Queneau, Villeneuve d'Ascq</p>
+                        </div>
                         <span class="dates">2024</span>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Lycée R. Queneau</span>
-                        <span class="tag">Mention Bien</span>
-                    </div>
-                    <p>
-                        Spécialités Numérique et Sciences Informatiques (NSI) et Anglais Monde Contemporain. Option Mathématiques complémentaires. [cite_start]Développement de la logique algorithmique et des bases informatiques[cite: 254, 258, 259, 260].
-                    </p>
+                    <p>Parcours scientifique avec spécialités Numérique et Sciences Informatiques et Anglais Monde Contemporain, complété par l'option Mathématiques complémentaires. Cette formation m'a permis d'acquérir les bases solides en algorithmique et en programmation Python qui ont facilité ma transition vers le BUT Informatique. Obtention de la certification Cambridge en anglais attestant d'un niveau B2.</p>
                 </div>
             </div>
         </div>
@@ -265,32 +367,22 @@
         <div class="container">
             <h2>02. Expériences</h2>
             <div class="grid-2">
-                <div class="dark-card">
+                <div class="glass-card">
                     <div class="card-header">
-                        <h3>Projet Plongée</h3>
+                        <h3>Projet Plongée Interdisciplinaire</h3>
                         <span class="dates">2023</span>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Gestion projet</span>
-                        <span class="tag">Partenariats</span>
-                    </div>
-                    <p>
-                        Participation à un projet interdisciplinaire au lycée. Implication dans la recherche de financements et gestion des partenariats. [cite_start]Développement de compétences en communication et obtention du niveau 1 de plongée[cite: 278, 280, 281].
-                    </p>
+                    <p><strong>Lycée Raymond Queneau - Classe de Première</strong></p>
+                    <p>Participation à un projet pluridisciplinaire combinant sciences de l'environnement et plongée sous-marine. Implication dans la recherche de financements et de partenariats avec des entreprises locales. Coordination des aspects logistiques et communication autour du projet. Séjour d'une semaine à la Presqu'île de Giens pour l'étude des fonds marins et obtention du niveau 1 de plongée. Ce projet m'a appris à gérer des responsabilités, à travailler en autonomie et à collaborer avec différents acteurs.</p>
                 </div>
 
-                <div class="dark-card">
+                <div class="glass-card">
                     <div class="card-header">
-                        <h3>Certification PSC1</h3>
+                        <h3>Formation Prévention et Secours Civiques</h3>
                         <span class="dates">2023</span>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Secourisme</span>
-                        <span class="tag">Sécurité</span>
-                    </div>
-                    <p>
-                        Formation "Prévention et Secours Civiques de niveau 1". [cite_start]Apprentissage des gestes de premiers secours, gestion du stress en situation d'urgence et réactivité face aux accidents[cite: 261].
-                    </p>
+                    <p><strong>Certification PSC1</strong></p>
+                    <p>Obtention du certificat de Prévention et Secours Civiques de niveau 1. Formation aux gestes de premiers secours et à la gestion des situations d'urgence. Cette certification témoigne de mon sens des responsabilités et de ma capacité à réagir efficacement dans des contextes stressants.</p>
                 </div>
             </div>
         </div>
@@ -301,52 +393,34 @@
             <h2>03. Réalisations</h2>
             <div class="grid-3">
                 
-                <div class="dark-card">
-                    <div class="card-header">
-                        <h3>Jeu de Labyrinthe</h3>
-                        <i class="fas fa-gamepad card-icon"></i>
+                <div class="glass-card">
+                    <h3>SAE 3.02 : Jeu de Labyrinthe</h3>
+                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java • Algorithmes de graphes</p>
+                    <p>Développement d'un jeu complet où le joueur doit rejoindre la sortie d'un labyrinthe. Implémentation de deux types de génération : labyrinthes aléatoires avec pourcentage de murs paramétrable et labyrinthes parfaits garantissant un chemin unique entre toutes les cellules. Création d'un mode libre permettant de personnaliser la taille et la difficulté, et d'un mode progression avec système d'étapes et de défis variés. Développement de plusieurs vues : vue omnisciente, vue locale avec portée limitée, et vue carte où le joueur doit se repérer sans connaître sa position exacte. Utilisation d'algorithmes de parcours de graphes pour valider l'existence de chemins et calculer les distances minimales. Ce projet m'a permis d'approfondir mes compétences en algorithmique, en conception orientée objet et en création d'interfaces utilisateur.</p>
+                    
+                    <div class="btn-group">
+                        <a href="Sujet SAE S3 Labyrinthe avec jalon 2.pdf" class="btn-accent" target="_blank">Voir le sujet</a>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">Algorithmes</span>
-                        <span class="tag">MVC</span>
-                    </div>
-                    <p>
-                        Développement d'un jeu complet avec génération procédurale de niveaux (aléatoires et parfaits) et résolution par graphes. [cite_start]Implémentation d'une architecture MVC, de modes de jeu (Libre/Progression) et de différentes vues (Globale/Locale)[cite: 5, 20, 43, 53].
-                    </p>
-                    <a href="#" class="proof-btn">Sujet du projet (PDF)</a>
                 </div>
 
-                <div class="dark-card">
-                    <div class="card-header">
-                        <h3>Projet Agile</h3>
-                        <i class="fas fa-users card-icon"></i>
+                <div class="glass-card">
+                    <h3>Projet Agile : Développement de Jeu</h3>
+                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java • Méthode Scrum</p>
+                    <p>Réalisation d'un jeu vidéo en Java lors d'une semaine intensive en équipe de quatre étudiants. Application de la méthodologie agile Scrum avec sprints quotidiens, rétrospectives et planification itérative. Développement de fonctionnalités en programmation orientée objet avec répartition des tâches selon les compétences de chacun. Gestion des versions avec Git et travail collaboratif sur GitLab. Ce projet m'a appris à m'adapter rapidement aux contraintes, à communiquer efficacement avec mon équipe et à livrer des fonctionnalités opérationnelles dans des délais courts.</p>
+                    
+                    <div class="btn-group">
+                        <a href="Martin MORENVILLE (2).pdf" class="btn-accent" target="_blank">Voir sur le CV</a>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Scrum</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">Sprint</span>
-                    </div>
-                    <p>
-                        Création d'un jeu vidéo en Java lors d'une semaine intensive en équipe. [cite_start]Application concrète de la méthode Agile/Scrum : réunions quotidiennes, gestion du backlog et adaptation rapide aux changements de spécifications[cite: 274, 276].
-                    </p>
-                    <a href="Martin MORENVILLE (2).pdf" class="proof-btn" target="_blank">Voir sur le CV</a>
                 </div>
 
-                <div class="dark-card">
-                    <div class="card-header">
-                        <h3>Affectation Séjours</h3>
-                        <i class="fas fa-project-diagram card-icon"></i>
+                <div class="glass-card">
+                    <h3>Application de Gestion de Séjours Linguistiques</h3>
+                    <p class="dates" style="margin: 0.5rem 0; display:inline-block;">Java • Modélisation de données</p>
+                    <p>Conception et développement d'une application Java complète pour gérer l'affectation des étudiants aux séjours linguistiques. Modélisation des entités et des relations entre étudiants, séjours et critères d'affectation. Implémentation d'algorithmes d'optimisation pour répartir les participants selon leurs préférences et les contraintes logistiques. Développement en équipe avec respect des spécifications fonctionnelles et techniques. Rédaction de documentation technique et tests unitaires pour garantir la qualité du code. Ce projet m'a permis de renforcer mes compétences en conception logicielle et en résolution de problèmes complexes.</p>
+
+                    <div class="btn-group">
+                        <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-accent" target="_blank">Voir sur GitLab</a>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tag">Graphes</span>
-                        <span class="tag">JavaFX</span>
-                        <span class="tag">Optimisation</span>
-                    </div>
-                    <p>
-                        Développement d'une application d'aide à la décision pour jumeler des correspondants. [cite_start]Utilisation de graphes bipartis pondérés pour maximiser les affinités tout en respectant des contraintes strictes (allergies, âge)[cite: 297].
-                    </p>
-                    <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="proof-btn" target="_blank">Code source GitLab</a>
                 </div>
 
             </div>
@@ -362,32 +436,30 @@
             </div>
 
             <div class="grid-3">
-                <div class="dark-card">
+                <div class="glass-card">
                     <h3 style="color: var(--accent);">Techniques</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        [cite_start]<li>▹ Java (POO), Python [cite: 265]</li>
-                        [cite_start]<li>▹ Web : HTML5, CSS3 [cite: 266]</li>
-                        [cite_start]<li>▹ Base de données : SQL [cite: 238]</li>
-                        [cite_start]<li>▹ Outils : Git, Linux [cite: 267, 268]</li>
+                    <ul class="competences-list">
+                        <li><strong>Développement :</strong> Java (POO), HTML, CSS.</li>
+                        <li><strong>Outils :</strong> Git, Environnements Linux et Windows.</li>
+                        <li><strong>Méthodologie :</strong> Gestion de projet.</li>
                     </ul>
                 </div>
 
-                <div class="dark-card">
-                    <h3 style="color: var(--accent);">Langues</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        [cite_start]<li>▹ Anglais : Niveau B2 (Certifié) [cite: 261, 288]</li>
-                        [cite_start]<li>▹ Allemand : Niveau A2 [cite: 289]</li>
-                        <li>▹ Français : Langue maternelle</li>
+                <div class="glass-card">
+                    <h3 style="color: var(--accent);">Langues & Intérêts</h3>
+                    <ul class="competences-list">
+                        <li><strong>Anglais :</strong> Niveau B2 (Certifié).</li>
+                        <li><strong>Allemand :</strong> Niveau A2.</li>
+                        <li><strong>Centres d'intérêt :</strong> Tennis (9 ans), Lecture (BD, manga), Jeux vidéo (stratégie, FPS).</li>
                     </ul>
                 </div>
 
-                <div class="dark-card">
+                <div class="glass-card">
                     <h3 style="color: var(--accent);">Savoir-Être</h3>
-                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-                        [cite_start]<li>▹ Travail en équipe [cite: 271]</li>
-                        [cite_start]<li>▹ Autonomie & Rigueur [cite: 301]</li>
-                        [cite_start]<li>▹ Gestion de projet [cite: 269]</li>
-                        [cite_start]<li>▹ Communication [cite: 272]</li>
+                    <ul class="competences-list">
+                        <li>Travail en équipe et en mode collaboratif.</li>
+                        <li>Capacité à communiquer et être à l'écoute.</li>
+                        <li>Autonomie et rigueur.</li>
                     </ul>
                 </div>
             </div>
@@ -395,29 +467,32 @@
     </section>
 
     <section id="contact">
-        <div class="container" style="text-align: center; max-width: 600px;">
+        <div class="container" style="text-align: center; max-width: 800px;">
             <p style="color: var(--accent); font-family: monospace;">05. Me joindre</p>
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; display: block;">Contact</h2>
+            <h2 style="font-size: 3rem; display: block; margin-bottom: 2rem;">Contact</h2>
+            <p>
+                Je suis actuellement à la recherche d'un stage de 10 semaines du 7 avril au 12 juin 2025 dans le domaine du développement informatique. N'hésitez pas à me contacter pour échanger sur d'éventuelles opportunités de collaboration.
+            </p>
             
-            <div class="dark-card" style="text-align: left;">
+            <div class="glass-card" style="text-align: left; max-width: 500px; margin: 2rem auto;">
                 <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 1rem;">
-                        <span style="color: var(--accent); margin-right: 10px;">✉</span>
-                        <a href="mailto:martin.morenville@gmail.com" style="color: var(--text-main); text-decoration: none;">martin.morenville@gmail.com</a>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">✉</span>
+                        <a href="mailto:martin.morenville@gmail.com" style="color: var(--text-main); text-decoration: none; font-size: 1.1rem;">martin.morenville@gmail.com</a>
                     </li>
-                    <li style="margin-bottom: 1rem;">
-                        <span style="color: var(--accent); margin-right: 10px;">📞</span>
-                        07 67 30 42 85
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">📞</span>
+                        <span style="font-size: 1.1rem;">07 67 30 42 85</span>
                     </li>
-                    <li>
-                        <span style="color: var(--accent); margin-right: 10px;">📍</span>
-                        [cite_start]Villeneuve d'Ascq [cite: 257]
+                    <li style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: var(--accent); font-size: 1.5rem;">📍</span>
+                        <span style="font-size: 1.1rem;">Villeneuve d'Ascq</span>
                     </li>
                 </ul>
             </div>
 
             <footer style="margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 2rem;">
-                <p>&copy; 2026 Martin Morenvillé.</p>
+                <p>&copy; 2026 Martin Morenvillé. Tous droits réservés.</p>
             </footer>
         </div>
     </section>
