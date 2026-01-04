@@ -43,17 +43,23 @@
         }
 
         nav ul {
-            display: flex; gap: 2rem; list-style: none;
-            flex-wrap: wrap; justify-content: center;
+            display: flex; gap: 2.5rem; list-style: none;
+            padding: 0; margin: 0;
         }
 
         nav a {
             color: var(--text-muted); text-decoration: none;
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
+            font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;
             transition: color 0.3s;
+            position: relative; padding-bottom: 5px;
         }
 
         nav a:hover { color: var(--accent); }
+        nav a:hover::after { width: 100%; }
+        nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: var(--accent); transition: width 0.3s;
+        }
 
         /* --- SECTIONS --- */
         section {
@@ -66,26 +72,26 @@
 
         .container { width: 100%; max-width: 1200px; margin: 0 auto; }
 
-        /* --- TYPOGRAPHIE --- */
         h1 {
-            font-size: 3rem; font-weight: 800; margin-bottom: 1rem;
+            font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem;
             background: linear-gradient(90deg, #fff, #a5a5a5);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 2.2rem; color: var(--accent); margin-bottom: 2.5rem;
+            font-size: 2.5rem; color: var(--accent); margin-bottom: 3rem;
             position: relative; display: inline-block;
         }
         
         h2::after {
-            content: ''; display: block; width: 50px; height: 3px;
-            background: var(--accent); margin-top: 8px;
+            content: ''; display: block; width: 60px; height: 3px;
+            background: var(--accent); margin-top: 10px;
         }
 
-        h3 { color: var(--text-main); font-size: 1.3rem; margin-bottom: 0.5rem; }
+        h3 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 0.5rem; }
         
-        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem; text-align: justify; }
+        /* Correction importante : text-align left */
+        p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; text-align: left; }
 
         /* --- CARTES --- */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; width: 100%; }
@@ -94,91 +100,77 @@
         .glass-card {
             background: var(--bg-panel);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             display: flex; flex-direction: column;
-            position: relative;
+            height: 100%;
         }
 
         .glass-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             border-color: var(--accent-glow);
         }
 
-        /* En-tête de carte avec Logo/Icone */
         .card-header {
             display: flex; justify-content: space-between; align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
-
-        .card-visual {
-            width: 50px; height: 50px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: var(--accent);
-            flex-shrink: 0; margin-left: 1rem;
-        }
-        
-        .card-visual img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
 
         .dates {
-            font-family: monospace; color: var(--accent);
-            font-size: 0.85rem; display: block; margin-top: 0.2rem;
+            font-family: monospace; color: var(--accent); background: var(--accent-glow);
+            padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.9rem;
+            white-space: nowrap; margin-left: 1rem;
         }
 
-        /* Liste à puces interne */
-        .tech-list {
-            list-style: none; padding: 0; margin: 0.5rem 0 1rem 0;
-            display: flex; flex-wrap: wrap; gap: 0.5rem;
+        /* Tags de compétences */
+        .tech-tags {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
         }
-        
-        .tech-badge {
-            background: rgba(100, 255, 218, 0.1); color: var(--accent);
-            padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-family: monospace;
+        .tag {
+            font-size: 0.8rem; color: var(--accent); border: 1px solid rgba(100, 255, 218, 0.3);
+            padding: 0.2rem 0.6rem; border-radius: 20px;
         }
 
-        /* Lien preuve (Bleu demandé) */
-        .proof-link {
-            display: inline-block; margin-top: auto;
-            color: #4dabf7; /* Bleu clair lisible sur fond sombre */
-            text-decoration: none; font-weight: 600; font-size: 0.9rem;
+        /* Lien Bleu */
+        .btn-link {
+            margin-top: auto;
+            color: #4dabf7; /* Bleu clair */
+            text-decoration: none; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem;
             transition: color 0.3s;
-            border: 1px solid rgba(77, 171, 247, 0.3);
-            padding: 0.5rem 1rem; border-radius: 4px;
-            width: fit-content;
         }
-
-        .proof-link:hover {
-            background: rgba(77, 171, 247, 0.1);
-            color: #74c0fc;
-        }
+        .btn-link:hover { color: #74c0fc; text-decoration: underline; }
 
         /* --- ACCUEIL --- */
         .hero-layout {
-            display: flex; align-items: center; justify-content: center; gap: 4rem;
-            max-width: 1100px;
+            display: flex; align-items: center; justify-content: center; gap: 5rem;
+            max-width: 1200px;
         }
         .profile-img {
-            width: 300px; height: 300px; object-fit: cover;
+            width: 350px; height: 350px; object-fit: cover;
             border-radius: 20px; filter: grayscale(20%);
             box-shadow: 20px 20px 0px rgba(100, 255, 218, 0.05);
+            transition: filter 0.3s;
         }
+        .profile-img:hover { filter: grayscale(0%); }
 
         /* --- MINDMAP --- */
         .mindmap-area {
-            text-align: center; margin-bottom: 3rem;
-            background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px;
+            width: 100%; min-height: 400px; 
+            background: rgba(255,255,255,0.03);
+            border: 2px dashed rgba(255,255,255,0.1); border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 3rem; overflow: hidden;
         }
-        .mindmap-img { max-width: 100%; height: auto; border-radius: 8px; }
+        .mindmap-img { max-width: 100%; height: auto; max-height: 600px; object-fit: contain; }
 
-        /* Responsive */
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .hero-layout { flex-direction: column-reverse; text-align: center; gap: 2rem; }
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
+            .profile-img { width: 250px; height: 250px; }
+            nav ul { gap: 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -198,16 +190,17 @@
     <section id="accueil">
         <div class="hero-layout">
             <div class="hero-text">
-                <p style="color: var(--accent); font-family: monospace;">Bonjour, je suis</p>
+                <p style="color: var(--accent); font-family: monospace; margin-bottom: 1rem;">Bonjour, je suis</p>
                 <h1>Martin Morenvillé.</h1>
-                <h2 style="font-size: 1.8rem; border: none; margin: 0; color: var(--text-muted); display: block;">
+                <h2 style="font-size: 2rem; border: none; margin: 0; color: var(--text-muted); display: block;">
                     Étudiant en BUT Informatique.
                 </h2>
                 <br>
                 <p>
-                    Étudiant en 2ème année de BUT Informatique à l'IUT de Lille, je suis passionné par le développement d'applications et l'architecture logicielle. J'ai acquis des compétences solides en Java, développement Web et gestion de bases de données à travers divers projets académiques et personnels. Rigoureux et autonome, j'apprécie particulièrement le travail en équipe et les méthodes Agiles. Je suis à la recherche d'un stage pour mettre mon savoir-faire technique au service de projets concrets.
+                    Passionné par le développement d'applications et l'architecture logicielle, je suis actuellement en 2ème année de BUT Informatique à l'IUT de Lille. J'ai acquis des compétences solides en Java, Web et gestion de projet Agile. Rigoureux et curieux, je cherche à concevoir des solutions performantes et ergonomiques. Je suis à la recherche d'un stage pour mettre mon savoir-faire au service de projets concrets.
                 </p>
             </div>
+            
             <div class="hero-visual">
                 <img src="Portrait.jpg" alt="Martin Morenvillé" class="profile-img">
             </div>
@@ -220,32 +213,36 @@
             <div class="grid-2">
                 <div class="glass-card">
                     <div class="card-header">
-                        <div>
-                            <h3>BUT Informatique</h3>
-                            <span class="dates">2024 - 2027 (En cours)</span>
-                        </div>
-                        <div class="card-visual">
-                            <i class="fas fa-university"></i> </div>
+                        <h3>BUT Informatique</h3>
+                        <span class="dates">2024 - 2027</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">IUT Lille</span>
+                        <span class="tag">Bac+3</span>
                     </div>
                     <p>
                         Parcours "Réalisation d'applications". Formation approfondie en développement logiciel (Java, Python), web (HTML/CSS), bases de données (SQL) et gestion de projet. Acquisition de méthodes de travail professionnelles (Agile/Scrum).
                     </p>
-                    <a href="https://iut.univ-lille.fr/" class="proof-link" target="_blank">Site de l'école</a>
+                    <a href="https://iut.univ-lille.fr/" class="btn-link" target="_blank">
+                        <i class="fas fa-link"></i> Site de l'école
+                    </a>
                 </div>
 
                 <div class="glass-card">
                     <div class="card-header">
-                        <div>
-                            <h3>Baccalauréat Général</h3>
-                            <span class="dates">2024</span>
-                        </div>
-                        <div class="card-visual">
-                            <i class="fas fa-graduation-cap"></i> </div>
+                        <h3>Baccalauréat Général</h3>
+                        <span class="dates">2024</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Lycée R. Queneau</span>
+                        <span class="tag">Mention Bien</span>
                     </div>
                     <p>
-                        Obtenu au Lycée Raymond Queneau (Villeneuve d'Ascq). Spécialités Numérique et Sciences Informatiques (NSI) et Anglais Monde Contemporain. Option Mathématiques complémentaires. Développement de la logique algorithmique.
+                        Spécialités Numérique et Sciences Informatiques (NSI) et Anglais Monde Contemporain. Option Mathématiques complémentaires. Développement de la logique algorithmique.
                     </p>
-                    <a href="#" class="proof-link">Diplôme du Bac</a>
+                    <a href="#" class="btn-link">
+                        <i class="fas fa-file-alt"></i> Voir le diplôme
+                    </a>
                 </div>
             </div>
         </div>
@@ -257,32 +254,32 @@
             <div class="grid-2">
                 <div class="glass-card">
                     <div class="card-header">
-                        <div>
-                            <h3>Projet Interdisciplinaire "Plongée"</h3>
-                            <span class="dates">2023 - Lycée</span>
-                        </div>
-                        <div class="card-visual">
-                            <i class="fas fa-water"></i> </div>
+                        <h3>Projet Plongée</h3>
+                        <span class="dates">2023</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Gestion de projet</span>
+                        <span class="tag">Communication</span>
                     </div>
                     <p>
-                        Participation active à un projet de classe en sciences de l'environnement. Implication dans la recherche de financements et la gestion des partenariats. Développement de compétences en communication et obtention du niveau 1 de plongée.
+                        Participation active à un projet interdisciplinaire. Implication dans la recherche de financements et gestion des partenariats. Développement de compétences en communication et obtention du niveau 1 de plongée.
                     </p>
-                    <a href="#" class="proof-link">Attestation Niveau 1</a>
+                    <a href="#" class="btn-link"><i class="fas fa-certificate"></i> Attestation</a>
                 </div>
 
                 <div class="glass-card">
                     <div class="card-header">
-                        <div>
-                            <h3>Certification PSC1</h3>
-                            <span class="dates">2023</span>
-                        </div>
-                        <div class="card-visual">
-                            <i class="fas fa-heartbeat"></i> </div>
+                        <h3>Certification PSC1</h3>
+                        <span class="dates">2023</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tag">Secourisme</span>
+                        <span class="tag">Sécurité</span>
                     </div>
                     <p>
                         Formation "Prévention et Secours Civiques de niveau 1". Apprentissage des gestes de premiers secours, gestion du stress en situation d'urgence et réactivité face aux accidents.
                     </p>
-                    <a href="#" class="proof-link">Certificat PSC1</a>
+                    <a href="#" class="btn-link"><i class="fas fa-certificate"></i> Certificat</a>
                 </div>
             </div>
         </div>
@@ -295,56 +292,50 @@
                 
                 <div class="glass-card">
                     <div class="card-header">
-                        <h3>SAE 3.02 : Jeu de Labyrinthe</h3>
-                        <div class="card-visual">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
+                        <h3>Jeu de Labyrinthe</h3>
+                        <i class="fas fa-gamepad" style="color:var(--accent); font-size:1.5rem;"></i>
                     </div>
-                    <div class="tech-list">
-                        <span class="tech-badge">Java</span>
-                        <span class="tech-badge">Algorithmes</span>
-                        <span class="tech-badge">MVC</span>
+                    <div class="tech-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">MVC</span>
+                        <span class="tag">Algo</span>
                     </div>
                     <p>
-                        Développement d'un jeu complet avec génération procédurale de niveaux (aléatoires et parfaits) et résolution par graphes. Implémentation d'une architecture MVC, de modes de jeu (Libre/Progression) et de différentes vues (Globale/Locale).
+                        Développement d'un jeu complet avec génération procédurale de niveaux (aléatoires et parfaits) et résolution par graphes. [cite_start]Implémentation d'une architecture MVC, de modes de jeu (Libre/Progression) et de différentes vues (Globale/Locale)[cite: 20, 23, 26, 43].
                     </p>
-                    <a href="#" class="proof-link">Sujet du projet (PDF)</a>
+                    <a href="#" class="btn-link"><i class="fas fa-file-pdf"></i> Sujet du projet (PDF)</a>
                 </div>
 
                 <div class="glass-card">
                     <div class="card-header">
                         <h3>Projet Agile</h3>
-                        <div class="card-visual">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
+                        <i class="fas fa-users" style="color:var(--accent); font-size:1.5rem;"></i>
                     </div>
-                    <div class="tech-list">
-                        <span class="tech-badge">Scrum</span>
-                        <span class="tech-badge">Java</span>
-                        <span class="tech-badge">Sprint</span>
+                    <div class="tech-tags">
+                        <span class="tag">Scrum</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">Sprint</span>
                     </div>
                     <p>
-                        Création d'un jeu vidéo en Java lors d'une semaine intensive en équipe. Application concrète de la méthode Agile/Scrum : réunions quotidiennes, gestion du backlog et adaptation rapide aux changements de spécifications du client.
+                        Création d'un jeu vidéo en Java lors d'une semaine intensive en équipe. [cite_start]Application concrète de la méthode Agile/Scrum : réunions quotidiennes, gestion du backlog et adaptation rapide aux changements de spécifications[cite: 274, 276].
                     </p>
-                    <a href="Martin MORENVILLE (2).pdf" class="proof-link" target="_blank">Voir sur le CV</a>
+                    <a href="Martin MORENVILLE (2).pdf" class="btn-link" target="_blank"><i class="fas fa-file-alt"></i> Voir sur le CV</a>
                 </div>
 
                 <div class="glass-card">
                     <div class="card-header">
                         <h3>Affectation Séjours</h3>
-                        <div class="card-visual">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
+                        <i class="fas fa-network-wired" style="color:var(--accent); font-size:1.5rem;"></i>
                     </div>
-                    <div class="tech-list">
-                        <span class="tech-badge">Graphes</span>
-                        <span class="tech-badge">JavaFX</span>
-                        <span class="tech-badge">Optimisation</span>
+                    <div class="tech-tags">
+                        <span class="tag">Graphes</span>
+                        <span class="tag">JavaFX</span>
+                        <span class="tag">Optimisation</span>
                     </div>
                     <p>
                         Développement d'une application d'aide à la décision pour jumeler des correspondants. Utilisation de graphes bipartis pondérés pour maximiser les affinités tout en respectant des contraintes strictes (allergies, âge).
                     </p>
-                    <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="proof-link" target="_blank">Code source GitLab</a>
+                    <a href="https://gitlab.univ-lille.fr/sae2.01-2.02/2025/B8" class="btn-link" target="_blank"><i class="fab fa-gitlab"></i> Code source GitLab</a>
                 </div>
 
             </div>
@@ -362,7 +353,7 @@
             <div class="grid-3">
                 <div class="glass-card">
                     <h3 style="color: var(--accent);">Techniques</h3>
-                    <ul style="list-style: none; padding-left: 0; color: var(--text-muted);">
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
                         <li>▹ Java (POO), Python</li>
                         <li>▹ Web : HTML5, CSS3</li>
                         <li>▹ Base de données : SQL</li>
@@ -372,20 +363,20 @@
 
                 <div class="glass-card">
                     <h3 style="color: var(--accent);">Langues</h3>
-                    <ul style="list-style: none; padding-left: 0; color: var(--text-muted);">
-                        <li>▹ Anglais : Niveau B2 (Certifié)</li>
-                        <li>▹ Allemand : Niveau A2</li>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
+                        [cite_start]<li>▹ Anglais : Niveau B2 (Certifié) [cite: 288]</li>
+                        [cite_start]<li>▹ Allemand : Niveau A2 [cite: 289]</li>
                         <li>▹ Français : Langue maternelle</li>
                     </ul>
                 </div>
 
                 <div class="glass-card">
                     <h3 style="color: var(--accent);">Savoir-Être</h3>
-                    <ul style="list-style: none; padding-left: 0; color: var(--text-muted);">
-                        <li>▹ Travail en équipe</li>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted);">
+                        [cite_start]<li>▹ Travail en équipe [cite: 271]</li>
                         <li>▹ Autonomie & Rigueur</li>
-                        <li>▹ Gestion de projet</li>
-                        <li>▹ Communication</li>
+                        [cite_start]<li>▹ Gestion de projet [cite: 269]</li>
+                        [cite_start]<li>▹ Communication [cite: 272]</li>
                     </ul>
                 </div>
             </div>
@@ -401,15 +392,15 @@
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin-bottom: 1rem;">
                         <span style="color: var(--accent); margin-right: 10px;">✉</span>
-                        <a href="mailto:martin.morenville@gmail.com" style="color: var(--text-main); text-decoration: none;">martin.morenville@gmail.com</a>
+                        [cite_start]<a href="mailto:martin.morenville@gmail.com" style="color: var(--text-main); text-decoration: none;">martin.morenville@gmail.com</a> [cite: 291]
                     </li>
                     <li style="margin-bottom: 1rem;">
                         <span style="color: var(--accent); margin-right: 10px;">📞</span>
-                        07 67 30 42 85
+                        [cite_start]07 67 30 42 85 [cite: 291]
                     </li>
                     <li>
                         <span style="color: var(--accent); margin-right: 10px;">📍</span>
-                        Villeneuve d'Ascq
+                        [cite_start]Villeneuve d'Ascq [cite: 291]
                     </li>
                 </ul>
             </div>
