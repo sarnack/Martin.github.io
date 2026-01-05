@@ -93,7 +93,7 @@
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; width: 100%; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; width: 100%; }
 
-        /* --- AJOUT POUR MINDMAP --- */
+        /* --- MINDMAP --- */
         .mindmap-area {
             width: 100%;
             margin-bottom: 3rem;
@@ -124,14 +124,14 @@
             border-color: var(--accent-glow);
         }
 
-        /* --- IMAGES DANS LES CARTES --- */
+        /* --- IMAGES DANS LES CARTES PROJETS --- */
         .card-img-top {
             width: 100%;
-            height: 180px; /* Hauteur fixe pour l'uniformité */
+            height: 180px;
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            background-color: rgba(255,255,255,0.05); /* Fond gris si pas d'image */
+            background-color: rgba(255,255,255,0.05);
         }
 
         .card-header {
@@ -144,15 +144,25 @@
             padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.85rem;
         }
 
-        /* --- COMPETENCES SPÉCIALES --- */
+        /* --- LISTES DE COMPÉTENCES --- */
         .skill-list {
             list-style: none; padding: 0; margin-top: auto;
             border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;
         }
         .skill-list li {
-            font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.3rem;
+            font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem;
         }
-        .skill-list li::before { content: '• '; color: var(--accent); }
+        /* Icone personnalisée pour les listes */
+        .skill-list li i {
+            color: var(--accent); margin-right: 10px; width: 20px; text-align: center;
+        }
+
+        /* --- ICONES DE SECTION COMPETENCE --- */
+        .skill-icon-header {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
 
         /* --- BOUTONS --- */
         .btn-group { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.8rem; }
@@ -164,18 +174,6 @@
             transition: all 0.3s; cursor: pointer;
         }
         .btn-accent:hover { background: var(--accent-glow); box-shadow: 0 0 15px var(--accent-glow); }
-
-        .btn-text {
-            background: none; border: none; color: var(--accent);
-            text-decoration: underline; cursor: pointer; font-size: 0.9rem;
-            padding: 0; margin-top: 0.5rem; display: inline-block;
-        }
-
-        /* --- CONTENU CACHÉ --- */
-        .hidden-content {
-            display: none; margin-top: 1rem; padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
 
         /* --- ACCUEIL --- */
         .hero-layout { display: flex; align-items: center; justify-content: center; gap: 5rem; max-width: 1200px; margin: 0 auto; }
@@ -216,10 +214,10 @@
                 </h2>
                 <br>
                 <p>
-                    Actuellement étudiant en deuxième année de BUT Informatique à l'IUT de Lille, je recherche un stage de 10 semaines du 7 avril au 12 juin 2025 pour consolider mes compétences en développement Java. Passionné par la programmation orientée objet et le travail collaboratif, j'ai réalisé plusieurs projets techniques comme une application de gestion de séjours linguistiques et un jeu de labyrinthe avec génération procédurale. Ces expériences m'ont permis de développer ma rigueur, mon autonomie et ma capacité à travailler efficacement en équipe. Mon objectif est d'intégrer une entreprise où je pourrai contribuer à des projets concrets tout en approfondissant mes connaissances techniques.
+                    Actuellement étudiant en deuxième année de BUT Informatique à l'IUT de Lille, je recherche un stage de 10 semaines du 7 avril au 12 juin 2025 pour consolider mes compétences en développement Java. Passionné par la programmation orientée objet et le travail collaboratif, j'ai réalisé plusieurs projets techniques comme une application de gestion de séjours linguistiques et un jeu de labyrinthe avec génération procédurale. Ces expériences m'ont permis de développer ma rigueur, mon autonomie et ma capacité à travailler efficacement en équipe.
                 </p>
                 <div style="margin-top: 1.5rem;">
-                    <a href="Martin MORENVILLE (2).pdf" class="btn-accent" target="_blank" download>
+                    <a href="Martin MORENVILLE.pdf" class="btn-accent" target="_blank" download>
                         <i class="fas fa-download"></i> Télécharger mon CV
                     </a>
                 </div>
@@ -263,53 +261,50 @@
                 <img src="Mindmap.png" alt="Carte mentale des compétences" class="mindmap-img">
             </div>
             
-            <div class="grid-3">
+            <div class="grid-2">
                 <div class="glass-card">
-                    <img src="java-competence.jpg" alt="Java" class="card-img-top">
-                    <h3>Développement Java</h3>
-                    <p>Programmation Orientée Objet, JavaFX, Algorithmique.</p>
+                    <div class="skill-icon-header"><i class="fas fa-code"></i></div>
+                    <h3>Techniques</h3>
+                    <p>Maîtrise des langages et concepts de développement.</p>
                     <ul class="skill-list">
-                        <li>Jeu de Labyrinthe</li>
-                        <li>Gestion Séjours</li>
-                        <li>Projet Agile</li>
+                        <li><i class="fab fa-java"></i> Java / JavaFX (POO)</li>
+                        <li><i class="fab fa-html5"></i> HTML5 / CSS3 / Web Design</li>
+                        <li><i class="fas fa-database"></i> SQL / Modélisation BDD</li>
+                        <li><i class="fas fa-terminal"></i> Algorithmique & Graphes</li>
                     </ul>
                 </div>
+
                 <div class="glass-card">
-                    <img src="web-competence.jpg" alt="Web" class="card-img-top">
-                    <h3>Développement Web</h3>
-                    <p>HTML5, CSS3, Responsive Design, Création de maquettes.</p>
-                </div>
-                <div class="glass-card">
-                    <img src="bdd-competence.jpg" alt="BDD" class="card-img-top">
-                    <h3>Base de Données</h3>
-                    <p>SQL, Modélisation (MCD/MLD), Access, Analyse de données.</p>
+                    <div class="skill-icon-header"><i class="fas fa-users"></i></div>
+                    <h3>Savoir-êtres</h3>
+                    <p>Aptitudes relationnelles et méthodologiques.</p>
                     <ul class="skill-list">
-                        <li>Gestion Séjours</li>
+                        <li><i class="fas fa-check-circle"></i> Travail d'équipe & Écoute</li>
+                        <li><i class="fas fa-sync-alt"></i> Méthode Agile Scrum</li>
+                        <li><i class="fas fa-brain"></i> Autonomie & Rigueur</li>
+                        <li><i class="fas fa-lightbulb"></i> Résolution de problèmes</li>
                     </ul>
                 </div>
+
                 <div class="glass-card">
-                    <img src="reseau-competence.jpg" alt="Système" class="card-img-top">
-                    <h3>Système & Réseau</h3>
-                    <p>Linux (Debian), Bash, Virtualisation, SSH.</p>
+                    <div class="skill-icon-header"><i class="fas fa-tools"></i></div>
+                    <h3>Outils</h3>
+                    <p>Environnements et logiciels maîtrisés.</p>
                     <ul class="skill-list">
-                        <li>Installation VM</li>
+                        <li><i class="fab fa-git-alt"></i> Git / GitLab</li>
+                        <li><i class="fab fa-linux"></i> Linux (Debian) / Bash</li>
+                        <li><i class="fas fa-desktop"></i> IDE (IntelliJ, VS Code)</li>
+                        <li><i class="fas fa-server"></i> Virtualisation (VM)</li>
                     </ul>
                 </div>
+
                 <div class="glass-card">
-                    <img src="agile-competence.jpg" alt="Gestion" class="card-img-top">
-                    <h3>Gestion de Projet</h3>
-                    <p>Méthode Agile Scrum, Gantt, Travail collaboratif.</p>
+                    <div class="skill-icon-header"><i class="fas fa-language"></i></div>
+                    <h3>Langues</h3>
+                    <p>Compétences linguistiques.</p>
                     <ul class="skill-list">
-                        <li>Création Entreprise</li>
-                    </ul>
-                </div>
-                <div class="glass-card">
-                    <img src="git-competence.jpg" alt="Outils" class="card-img-top">
-                    <h3>Outils & Langues</h3>
-                    <p>Git, GitLab, Anglais (B2), Communication.</p>
-                    <ul class="skill-list">
-                        <li>Vidéos Vulgarisation</li>
-                        <li>Rapports Techniques</li>
+                        <li><i class="fas fa-flag"></i> Français (Langue maternelle)</li>
+                        <li><i class="fas fa-globe-americas"></i> Anglais (Niveau B2 - Technique)</li>
                     </ul>
                 </div>
             </div>
@@ -322,7 +317,7 @@
             <div class="grid-3">
                 
                 <div class="glass-card">
-                    <img src="labyrinthe-projet.jpg" alt="Labyrinthe" class="card-img-top">
+                    <img src="appliJava.png" alt="Labyrinthe Java" class="card-img-top">
                     <div class="card-header">
                         <h3>Jeu de Labyrinthe</h3>
                         <span class="dates">Java • Algo</span>
@@ -334,7 +329,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <img src="sejours-projet.jpg" alt="Séjours" class="card-img-top">
+                    <img src="accueilProjet.png" alt="Application Séjours" class="card-img-top">
                     <div class="card-header">
                         <h3>Gestion Séjours</h3>
                         <span class="dates">Java • Graphes</span>
@@ -346,19 +341,19 @@
                 </div>
 
                 <div class="glass-card">
-                    <img src="agile-projet.jpg" alt="Agile" class="card-img-top">
+                    <img src="Projet Scrum.png" alt="Projet Agile Scrum" class="card-img-top">
                     <div class="card-header">
                         <h3>Projet Agile</h3>
                         <span class="dates">Scrum • Java</span>
                     </div>
                     <p>Création d'un jeu vidéo en une semaine intensive. Application stricte de la méthode Scrum (Sprints, Dailies).</p>
                     <div class="btn-group">
-                        <a href="Martin MORENVILLE (2).pdf" class="btn-accent" target="_blank">Voir CV</a>
+                        <a href="Martin MORENVILLE.pdf" class="btn-accent" target="_blank">Voir CV</a>
                     </div>
                 </div>
 
                 <div class="glass-card">
-                    <img src="vm-projet.jpg" alt="Linux" class="card-img-top">
+                    <img src="machineVirtuelle.png" alt="Machine Virtuelle Linux" class="card-img-top">
                     <div class="card-header">
                         <h3>Machine Virtuelle</h3>
                         <span class="dates">Linux • SysAdmin</span>
@@ -370,7 +365,9 @@
                 </div>
 
                 <div class="glass-card">
-                    <img src="gestion-projet.jpg" alt="Entreprise" class="card-img-top">
+                    <div style="height: 180px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 1.5rem; display:flex; align-items:center; justify-content:center; color: var(--accent);">
+                        <i class="fas fa-briefcase fa-3x"></i>
+                    </div>
                     <div class="card-header">
                         <h3>Création d'Entreprise</h3>
                         <span class="dates">Gestion • Gantt</span>
@@ -382,7 +379,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <img src="video-3d-projet.jpg" alt="Vidéo" class="card-img-top">
+                    <img src="imageVideo.png" alt="Montage Vidéo" class="card-img-top">
                     <div class="card-header">
                         <h3>Vulgarisation 3D</h3>
                         <span class="dates">Com • Montage</span>
@@ -425,17 +422,5 @@
         </div>
     </section>
 
-    <script>
-        function toggleDetails(id, btn) {
-            var content = document.getElementById(id);
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                btn.innerText = "Voir plus";
-            } else {
-                content.style.display = "block";
-                btn.innerText = "Voir moins";
-            }
-        }
-    </script>
 </body>
 </html>
